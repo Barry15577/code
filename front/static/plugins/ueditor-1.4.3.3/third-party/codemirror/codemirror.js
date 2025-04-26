@@ -1,10 +1,3 @@
-// CodeMirror version 2.2
-//
-// All functions that need access to the editor's state live inside
-// the CodeMirror function. Below that, at the bottom of the file,
-// some utilities are defined.
-
-// CodeMirror is the only global var we claim
 var CodeMirror = (function() {
     // This is the function that produces an editor instance. It's
     // closure is used to store the editor state.
