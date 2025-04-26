@@ -1,23 +1,23 @@
 export default {
   namespaced: true,
-  state: {
-    // 页面文档可视高度(随窗口改变大小)
-    documentClientHeight: 0,
-    // 导航条, 布局风格, defalut(默认) / inverse(反向)
-    navbarLayoutType: 'default',
-    // 侧边栏, 布局皮肤, light(浅色) / dark(黑色)
-    sidebarLayoutSkin: 'dark',
-    // 侧边栏, 折叠状态
-    sidebarFold: false,
-    // 侧边栏, 菜单
-    menuList: [],
-    menuActiveName: '',
-    // 内容, 是否需要刷新
-    contentIsNeedRefresh: false,
-    // 主入口标签页
-    mainTabs: [],
-    mainTabsActiveName: ''
-  },
+state: {
+// The visible height of the page document (changes with the window size)
+documentClientHeight: 0,
+// Navigation bar, layout style, default (default) / inverse (reverse)
+navbarLayoutType: 'default',
+// Sidebar, layout skin, light (light color) / dark (black)
+sidebarLayoutSkin: 'dark',
+// Sidebar, folded state
+sidebarFold: false,
+// Sidebar, menu
+menuList: [],
+menuActiveName: '',
+// Content, whether to refresh
+contentIsNeedRefresh: false,
+// Main entry tab page
+mainTabs: [],
+mainTabsActiveName: ''
+},
   mutations: {
     updateDocumentClientHeight (state, height) {
       state.documentClientHeight = height
