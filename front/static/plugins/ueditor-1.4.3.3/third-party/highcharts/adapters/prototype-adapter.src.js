@@ -1,17 +1,4 @@
-/**
- * @license Highcharts JS v3.0.6 (2013-10-04)
- * Prototype adapter
- *
- * @author Michael Nelson, Torstein Hønsi.
- *
- * Feel free to use and modify this script.
- * Highcharts license: www.highcharts.com/license.
- */
 
-// JSLint options:
-/*global Effect, Class, Event, Element, $, $$, $A */
-
-// Adapter interface between prototype and the Highcharts charting library
 var HighchartsAdapter = (function () {
 
 var hasEffect = typeof Effect !== 'undefined';
