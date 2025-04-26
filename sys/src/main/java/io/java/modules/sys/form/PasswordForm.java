@@ -5,19 +5,19 @@ package io.java.modules.sys.form;
 import lombok.Data;
 
 /**
- * 密码表单
- *
- * @author Jiasi Lu
- */
+* Password form
+*
+* @author Jiasi Lu
+*/
 @Data
 public class PasswordForm {
-    /**
-     * 原密码
-     */
-    private String password;
-    /**
-     * 新密码
-     */
-    private String newPassword;
+/**
+* Original password
+*/
+private String password;
+/**
+* New password
+*/
+private String newPassword;
 
 }
