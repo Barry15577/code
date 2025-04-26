@@ -1,11 +1,11 @@
 <template>
   <div class="mod-demo-echarts">
     <el-alert
-      title="提示："
+      title="Hint："
       type="warning"
       :closable="false">
       <div slot-scope="description">
-        <p class="el-alert__description">1. 此Demo只提供ECharts官方使用文档，入门部署和体验功能。具体使用请参考：http://echarts.baidu.com/index.html</p>
+        <p class="el-alert__description">1 </p>
       </div>
     </el-alert>
 
@@ -51,8 +51,8 @@
       this.initChartPie()
       this.initChartScatter()
     },
-    activated () {
-      // 由于给echart添加了resize事件, 在组件激活时需要重新resize绘画一次, 否则出现空白bug
+  activated () {
+// Since the resize event is added to echart, it needs to be resized and drawn once when the component is activated, otherwise a blank bug will occur
       if (this.chartLine) {
         this.chartLine.resize()
       }
@@ -67,213 +67,213 @@
       }
     },
     methods: {
-      // 折线图
-      initChartLine () {
-        var option = {
-          'title': {
-            'text': '折线图堆叠'
-          },
-          'tooltip': {
-            'trigger': 'axis'
-          },
-          'legend': {
-            'data': [ '邮件营销', '联盟广告', '视频广告', '直接访问', '搜索引擎' ]
-          },
-          'grid': {
-            'left': '3%',
-            'right': '4%',
-            'bottom': '3%',
-            'containLabel': true
-          },
-          'toolbox': {
-            'feature': {
-              'saveAsImage': { }
-            }
-          },
-          'xAxis': {
-            'type': 'category',
-            'boundaryGap': false,
-            'data': [ '周一', '周二', '周三', '周四', '周五', '周六', '周日' ]
-          },
-          'yAxis': {
-            'type': 'value'
-          },
-          'series': [
-            {
-              'name': '邮件营销',
-              'type': 'line',
-              'stack': '总量',
-              'data': [ 120, 132, 101, 134, 90, 230, 210 ]
-            },
-            {
-              'name': '联盟广告',
-              'type': 'line',
-              'stack': '总量',
-              'data': [ 220, 182, 191, 234, 290, 330, 310 ]
-            },
-            {
-              'name': '视频广告',
-              'type': 'line',
-              'stack': '总量',
-              'data': [ 150, 232, 201, 154, 190, 330, 410 ]
-            },
-            {
-              'name': '直接访问',
-              'type': 'line',
-              'stack': '总量',
-              'data': [ 320, 332, 301, 334, 390, 330, 320 ]
-            },
-            {
-              'name': '搜索引擎',
-              'type': 'line',
-              'stack': '总量',
-              'data': [ 820, 932, 901, 934, 1290, 1330, 1320 ]
-            }
-          ]
-        }
+// Line chart
+initChartLine () {
+var option = {
+'title': {
+'text': 'Line chart stacking'
+},
+'tooltip': {
+'trigger': 'axis'
+},
+'legend': {
+'data': [ 'Email marketing', 'Affiliate advertising', 'Video advertising', 'Direct access', 'Search engine' ]
+},
+'grid': {
+'left': '3%',
+'right': '4%',
+'bottom': '3%',
+'containLabel': true
+},
+'toolbox': {
+'feature': {
+'saveAsImage': { }
+}
+},
+'xAxis': {
+'type': 'category',
+'boundaryGap': false,
+'data': [ 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday' ]
+},
+'yAxis': {
+'type': 'value'
+},
+'series': [
+{
+'name': 'Email Marketing',
+'type': 'line',
+'stack': 'Total Amount',
+'data': [ 120, 132, 101, 134, 90, 230, 210 ]
+},
+{
+'name': 'Affiliate Advertising',
+'type': 'line',
+'stack': 'Total Amount',
+'data': [ 220, 182, 191, 234, 290, 330, 310 ]
+},
+{
+'name': 'Video Ads',
+'type': 'line',
+'stack': 'Total',
+'data': [ 150, 232, 201, 154, 190, 330, 410 ]
+},
+{
+'name': 'Direct Access',
+'type': 'line',
+'stack': 'Total',
+'data': [ 320, 332, 301, 334, 390, 330, 320 ]
+},
+{
+'name': 'Search Engine',
+'type': 'line',
+'stack': 'Total',
+'data': [ 820, 932, 901, 934, 1290, 1330, 1320 ] 
+} 
+] 
+}
         this.chartLine = echarts.init(document.getElementById('J_chartLineBox'))
         this.chartLine.setOption(option)
         window.addEventListener('resize', () => {
           this.chartLine.resize()
         })
       },
-      // 柱状图
-      initChartBar () {
-        var option = {
-          tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-              type: 'shadow'
-            }
-          },
-          legend: {
-            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '百度', '谷歌', '必应', '其他']
-          },
-          grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-          },
-          xAxis: [
-            {
-              type: 'category',
-              data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
-            }
-          ],
-          yAxis: [
-            {
-              type: 'value'
-            }
-          ],
-          series: [
-            {
-              name: '直接访问',
-              type: 'bar',
-              data: [320, 332, 301, 334, 390, 330, 320]
-            },
-            {
-              name: '邮件营销',
-              type: 'bar',
-              stack: '广告',
-              data: [120, 132, 101, 134, 90, 230, 210]
-            },
-            {
-              name: '联盟广告',
-              type: 'bar',
-              stack: '广告',
-              data: [220, 182, 191, 234, 290, 330, 310]
-            },
-            {
-              name: '视频广告',
-              type: 'bar',
-              stack: '广告',
-              data: [150, 232, 201, 154, 190, 330, 410]
-            },
-            {
-              name: '搜索引擎',
-              type: 'bar',
-              data: [862, 1018, 964, 1026, 1679, 1600, 1570],
-              markLine: {
-                lineStyle: {
-                  normal: {
-                    type: 'dashed'
-                  }
-                },
-                data: [
-                  [{ type: 'min' }, { type: 'max' }]
-                ]
-              }
-            },
-            {
-              name: '百度',
-              type: 'bar',
-              barWidth: 5,
-              stack: '搜索引擎',
-              data: [620, 732, 701, 734, 1090, 1130, 1120]
-            },
-            {
-              name: '谷歌',
-              type: 'bar',
-              stack: '搜索引擎',
-              data: [120, 132, 101, 134, 290, 230, 220]
-            },
-            {
-              name: '必应',
-              type: 'bar',
-              stack: '搜索引擎',
-              data: [60, 72, 71, 74, 190, 130, 110]
-            },
-            {
-              name: '其他',
-              type: 'bar',
-              stack: '搜索引擎',
-              data: [62, 82, 91, 84, 109, 110, 120]
-            }
-          ]
-        }
+      // Bar chart
+initChartBar () {
+var option = {
+tooltip: {
+trigger: 'axis',
+axisPointer: {
+type: 'shadow'
+}
+},
+legend: {
+data: ['Direct access', 'Email marketing', 'Affiliate advertising', 'Video advertising', 'Search engine', 'Baidu', 'Google', 'Bing', 'Other']
+},
+grid: {
+left: '3%',
+right: '4%',
+bottom: '3%',
+containLabel: true
+},
+xAxis: [
+{
+type: 'category',
+data: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+}
+],
+yAxis: [
+{
+type: 'value'
+}
+],
+series: [
+{
+name: 'Direct access',
+type: 'bar',
+data: [320, 332, 301, 334, 390, 330, 320]
+},
+{
+name: 'Email marketing',
+type: 'bar',
+stack: 'Advertisement',
+data: [120, 132, 101, 134, 90, 230, 210]
+},
+{
+name: 'Alliance advertising',
+type: 'bar',
+stack: 'Advertisement',
+data: [220, 182, 191, 234, 290, 330, 310]
+},
+{
+name: 'Video advertising',
+type: 'bar',
+stack: 'Advertisement',
+data: [150, 232, 201, 154, 190, 330, 410]
+},
+{
+name: 'Search Engine',
+type: 'bar',
+data: [862, 1018, 964, 1026, 1679, 1600, 1570],
+markLine: {
+lineStyle: {
+normal: {
+type: 'dashed'
+}
+},
+data: [
+[{ type: 'min' }, { type: 'max' }]
+]
+}
+},
+{
+name: 'Baidu',
+type: 'bar',
+barWidth: 5,
+stack: 'Search Engine',
+data: [620, 732, 701, 734, 1090, 1130, 1120]
+},
+{
+name: 'Google',
+type: 'bar',
+stack: 'Search Engine',
+data: [120, 132, 101, 134, 290, 230, 220]
+},
+{
+name: 'Bing',
+type: 'bar',
+stack: 'Search Engine',
+data: [60, 72, 71, 74, 190, 130, 110]
+},
+{
+name: 'Other',
+type: 'bar',
+stack: 'Search Engine',
+data: [62, 82, 91, 84, 109, 110, 120]
+}
+]
+}
         this.chartBar = echarts.init(document.getElementById('J_chartBarBox'))
         this.chartBar.setOption(option)
         window.addEventListener('resize', () => {
           this.chartBar.resize()
         })
       },
-      // 饼状图
-      initChartPie () {
-        var option = {
-          backgroundColor: '#2c343c',
-          title: {
-            text: 'Customized Pie',
-            left: 'center',
-            top: 20,
-            textStyle: {
-              color: '#ccc'
-            }
-          },
-          tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
-          },
-          visualMap: {
-            show: false,
-            min: 80,
-            max: 600,
-            inRange: {
-              colorLightness: [0, 1]
-            }
-          },
-          series: [
-            {
-              name: '访问来源',
-              type: 'pie',
-              radius: '55%',
-              center: ['50%', '50%'],
-              data: [
-                { value: 335, name: '直接访问' },
-                { value: 310, name: '邮件营销' },
-                { value: 274, name: '联盟广告' },
-                { value: 235, name: '视频广告' },
-                { value: 400, name: '搜索引擎' }
+// pie chart 
+initChartPie () { 
+var option = { 
+backgroundColor: '#2c343c', 
+title: { 
+text: 'Customized Pie', 
+left: 'center', 
+top: 20, 
+textStyle: { 
+color: '#ccc' 
+} 
+}, 
+tooltip: { 
+trigger: 'item', 
+formatter: '{a} <br/>{b} : {c} ({d}%)' 
+}, 
+visualMap: { 
+show: false, 
+min: 80, 
+max: 600, 
+inRange: { 
+colorLightness: [0, 1] 
+} 
+}, 
+series: [ 
+{ 
+name: 'Access source', 
+type: 'pie', 
+radius: '55%', 
+center: ['50%', '50%'], 
+data: [ 
+{ value: 335, name: 'Direct access' },
+{ value: 310, name: 'Email marketing' },
+{ value: 274, name: 'Affiliate advertising' },
+{ value: 235, name: 'Video advertising' },
+{ value: 400, name: 'Search engine' }
               ].sort(function (a, b) { return a.value - b.value }),
               roseType: 'radius',
               label: {
@@ -314,16 +314,16 @@
           this.chartPie.resize()
         })
       },
-      // 散点图
-      initChartScatter () {
-        var option = {
-          backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [
-            { offset: 0, color: '#f7f8fa' },
-            { offset: 1, color: '#cdd0d5' }
-          ]),
-          title: {
-            text: '1990 与 2015 年各国家人均寿命与 GDP'
-          },
+     // Scatter chart
+initChartScatter () {
+var option = {
+backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [
+{ offset: 0, color: '#f7f8fa' },
+{ offset: 1, color: '#cdd0d5' }
+]),
+title: {
+text: 'Life expectancy and GDP of each country in 1990 and 2015'
+},
           legend: {
             right: 10,
             data: ['1990', '2015']
