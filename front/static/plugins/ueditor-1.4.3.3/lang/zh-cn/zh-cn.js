@@ -1,31 +1,25 @@
-/**
- * Created with JetBrains PhpStorm.
- * User: taoqili
- * Date: 12-6-12
- * Time: 下午5:02
- * To change this template use File | Settings | File Templates.
- */
+
 UE.I18N['zh-cn'] = {
     'labelMap':{
-        'anchor':'锚点', 'undo':'撤销', 'redo':'重做', 'bold':'加粗', 'indent':'首行缩进', 'snapscreen':'截图',
-        'italic':'斜体', 'underline':'下划线', 'strikethrough':'Delete线', 'subscript':'下标','fontborder':'字符边框',
-        'superscript':'上标', 'formatmatch':'格式刷', 'source':'源代码', 'blockquote':'引用',
-        'pasteplain':'纯文本粘贴模式', 'selectall':'全选', 'print':'打印', 'preview':'预览',
-        'horizontal':'分隔线', 'removeformat':'清除格式', 'time':'时间', 'date':'日期',
-        'unlink':'取消链接', 'insertrow':'前插入行', 'insertcol':'前插入列', 'mergeright':'右合并单元格', 'mergedown':'下合并单元格',
-        'deleterow':'Delete行', 'deletecol':'Delete列', 'splittorows':'拆分成行',
-        'splittocols':'拆分成列', 'splittocells':'完全拆分单元格','deletecaption':'Delete表格标题','inserttitle':'插入标题',
-        'mergecells':'合并多个单元格', 'deletetable':'Delete表格', 'cleardoc':'清空文档','insertparagraphbeforetable':"表格前插入行",'insertcode':'代码语言',
-        'fontfamily':'字体', 'fontsize':'字号', 'paragraph':'段落格式', 'simpleupload':'单图上传', 'insertimage':'多图上传','edittable':'表格属性','edittd':'单元格属性', 'link':'超链接',
-        'emotion':'表情', 'spechars':'特殊字符', 'searchreplace':'查询替换', 'map':'Baidu地图', 'gmap':'Google地图',
-        'insertvideo':'视频', 'help':'帮助', 'justifyleft':'居左对齐', 'justifyright':'居右对齐', 'justifycenter':'居中对齐',
-        'justifyjustify':'两端对齐', 'forecolor':'字体颜色', 'backcolor':'背景色', 'insertorderedlist':'有序列表',
-        'insertunorderedlist':'无序列表', 'fullscreen':'全屏', 'directionalityltr':'从左向右输入', 'directionalityrtl':'从右向左输入',
-        'rowspacingtop':'段前距', 'rowspacingbottom':'段后距',  'pagebreak':'分页', 'insertframe':'插入Iframe', 'imagenone':'默认',
-        'imageleft':'左浮动', 'imageright':'右浮动', 'attachment':'附件', 'imagecenter':'居中', 'wordimage':'图片转存',
-        'lineheight':'行间距','edittip' :'编辑提示','customstyle':'自定义标题', 'autotypeset':'自动排版',
-        'webapp':'百度应用','touppercase':'字母大写', 'tolowercase':'字母小写','background':'背景','template':'模板','scrawl':'涂鸦',
-        'music':'音乐','inserttable':'插入表格','drafts': '从草稿箱加载', 'charts': '图表'
+       'anchor':'anchor', 'undo':'undo', 'redo':'redo', 'bold':'bold', 'indent':'first line indent', 'snapscreen':'screenshot',
+'italic':'italic', 'underline':'underline', 'strikethrough':'delete line', 'subscript':'subscript','fontborder':'character border',
+'superscript':'superscript', 'formatmatch':'format brush', 'source':'source code', 'blockquote':'quote',
+'pasteplain':'plain text paste mode', 'selectall':'select all', 'print':'print', 'preview':'preview',
+'horizontal':'separator', 'removeformat':'clear format', 'time':'time', 'date':'date',
+'unlink':'unlink', 'insertrow':'insert row before', 'insertcol':'insert column before', 'mergeright':'merge right', 'mergedown':'merge down',
+'deleterow':'Delete row', 'deletecol':'Delete column', 'splittorows':'split into rows',
+'splittocols':'split into columns', 'splittocells':'split cells completely','deletecaption':'Delete table title','inserttitle':'insert title',
+'mergecells':'merge multiple cells', 'deletetable':'Delete table', 'cleardoc':'Clear document','insertparagraphbeforetable':'Insert row before table','insertcode':'Code language',
+'fontfamily':'Font', 'fontsize':'Font size', 'paragraph':'Paragraph format', 'simpleupload':'Single image upload', 'insertimage':'Multiple image upload','edittable':'Table properties','edittd':'Cell properties', 'link':'Hyperlink',
+'emotion':'Emoji', 'spechars':'Special characters', 'searchreplace':'Search replacement', 'map':'Baidu map', 'gmap':'Google map',
+'insertvideo':'Video', 'help':'Help', 'justifyleft':'Align left', 'justifyright':'Align right', 'justifycenter':'Center alignment',
+'justifyjustify':'Align both ends', 'forecolor':'Font color', 'backcolor':'Background color', 'insertorderedlist':'Ordered list',
+'insertunorderedlist':'Unordered list', 'fullscreen':'Full screen', 'directionalityltr':'Enter from left to right', 'directionalityrtl':'Enter from right to left',
+'rowspacingtop':'Paragraph spacing', 'rowspacingbottom':'Paragraph spacing', 'pagebreak':'Page break', 'insertframe':'Insert Iframe', 'imagenone':'Default',
+'imageleft':'Float left', 'imageright':'Float right', 'attachment':'Attachment', 'imagecenter':'Center', 'wordimage':'Image transfer',
+'lineheight':'Line spacing','edittip':'Edit tips','customstyle':'Custom title', 'autotypeset':'Automatic typesetting',
+'webapp':'Baidu application','touppercase':'Uppercase', 'tolowercase':'Lowercase','background':'Background','template':'Template','scrawl':'Graffiti',
+'music':'Music','inserttable':'Insert table','drafts': 'Load from the draft box', 'charts': 'Charts'
     },
     'insertorderedlist':{
         'num':'1,2,3...',
@@ -41,65 +35,65 @@ UE.I18N['zh-cn'] = {
         'upper-roman':'I,II,III...'
     },
     'insertunorderedlist':{
-        'circle':'○ 大圆圈',
-        'disc':'● 小黑点',
-        'square':'■ 小方块 ',
-        'dash' :'— 破折号',
-        'dot':' 。 小圆圈'
+       'circle':'○ big circle',
+'disc':'● small black dot',
+'square':'■ small square',
+'dash':'— dash',
+'dot':' . small circle'
     },
-    'paragraph':{'p':'段落', 'h1':'标题 1', 'h2':'标题 2', 'h3':'标题 3', 'h4':'标题 4', 'h5':'标题 5', 'h6':'标题 6'},
-    'fontfamily':{
-        'songti':'宋体',
-        'kaiti':'楷体',
-        'heiti':'黑体',
-        'lishu':'隶书',
-        'yahei':'微软雅黑',
-        'andaleMono':'andale mono',
-        'arial': 'arial',
-        'arialBlack':'arial black',
-        'comicSansMs':'comic sans ms',
-        'impact':'impact',
-        'timesNewRoman':'times new roman'
-    },
-    'customstyle':{
-        'tc':'标题居中',
-        'tl':'标题居左',
-        'im':'强调',
-        'hi':'明显强调'
-    },
-    'autoupload': {
-        'exceedSizeError': '文件大小超出限制',
-        'exceedTypeError': '文件格式不允许',
-        'jsonEncodeError': '服务器返回格式错误',
-        'loading':"正在上传...",
-        'loadError':"上传错误",
-        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！'
-    },
+    'paragraph':{'p':'Paragraph', 'h1':'Title 1', 'h2':'Title 2', 'h3':'Title 3', 'h4':'Title 4', 'h5':'Title 5', 'h6':'Title 6'},
+'fontfamily':{
+'songti':'Songti',
+'kaiti':'Kaiti',
+'heiti':'Heiti',
+'lishu':'Lishu',
+'yahei':'Microsoft Yahei',
+'andaleMono':'andale mono',
+'arial': 'arial',
+'arialBlack':'arial black',
+'comicSansMs':'comic sans ms',
+'impact':'impact',
+'timesNewRoman':'times new roman'
+},
+'customstyle':{
+'tc':'Title centered',
+'tl':'Title left',
+'im':'Emphasis',
+'hi':'Clear emphasis'
+},
+'autoupload':{
+'exceedSizeError': 'File size exceeds limit',
+'exceedTypeError': 'File format not allowed',
+'jsonEncodeError': 'Server returns format error',
+'loading':"Uploading...",
+'loadError':"Upload error",
+'errorLoadConfig': 'Backend configuration items are not loaded normally, upload plug-in can not be used normally! '
+},
     'simpleupload':{
-        'exceedSizeError': '文件大小超出限制',
-        'exceedTypeError': '文件格式不允许',
-        'jsonEncodeError': '服务器返回格式错误',
-        'loading':"正在上传...",
-        'loadError':"上传错误",
-        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！'
-    },
-    'elementPathTip':"元素路径",
-    'wordCountTip':"字数统计",
-    'wordCountMsg':'当前已输入{#count}个字符, 您还可以输入{#leave}个字符。 ',
-    'wordOverFlowMsg':'<span style="color:red;">字数超出最大允许值，服务器可能拒绝保存！</span>',
-    'ok':"确认",
-    'cancel':"取消",
-    'closeDialog':"关闭对话框",
-    'tableDrag':"表格拖动必须引入uiUtils.js文件！",
-    'autofloatMsg':"工具栏浮动依赖编辑器UI，您首先需要引入UI文件!",
-    'loadconfigError': '获取后台配置项请求出错，上传功能将不能正常使用！',
-    'loadconfigFormatError': '后台配置项返回格式出错，上传功能将不能正常使用！',
-    'loadconfigHttpError': '请求后台配置项http错误，上传功能将不能正常使用！',
-    'snapScreen_plugin':{
-        'browserMsg':"仅支持IE浏览器！",
-        'callBackErrorMsg':"服务器返回数据有误，请检查配置项之后重试。",
-        'uploadErrorMsg':"截图上传失败，请检查服务器端环境! "
-    },
+'exceedSizeError': 'File size exceeds limit',
+'exceedTypeError': 'File format not allowed',
+'jsonEncodeError': 'Server returns format error',
+'loading':"Uploading...",
+'loadError':"Upload error",
+'errorLoadConfig': 'Backend configuration items are not loaded normally, upload plug-in can not be used normally! '
+},
+'elementPathTip':"Element path",
+'wordCountTip':"Word count",
+'wordCountMsg':'Currently entered {#count} characters, you can also enter {#leave} characters. ',
+'wordOverFlowMsg':'<span style="color:red;">The number of words exceeds the maximum allowed value, the server may refuse to save! </span>',
+'ok':"Confirm",
+'cancel':"Cancel",
+'closeDialog':"Close dialog box",
+'tableDrag':"Table dragging must introduce uiUtils.js file!",
+'autofloatMsg':"Toolbar floating depends on editor UI, you first need to introduce UI file!",
+'loadconfigError': 'Error in requesting background configuration items, upload function will not work properly! ',
+'loadconfigFormatError': 'Error in the format of the backend configuration item return, upload function will not work properly! ',
+'loadconfigHttpError': 'Error in requesting background configuration items http, upload function will not work properly! ',
+'snapScreen_plugin':{
+'browserMsg':"Only supports IE browser!",
+'callBackErrorMsg':"The data returned by the server is incorrect. Please check the configuration items and try again.",
+'uploadErrorMsg':"Screenshot upload failed. Please check the server environment! "
+},
     'insertcode':{
         'as3':'ActionScript 3',
         'bash':'Bash/Shell',
@@ -126,544 +120,543 @@ UE.I18N['zh-cn'] = {
         'vb':'Visual Basic',
         'xml':'XML'
     },
-    'confirmClear':"确定清空当前文档么？",
-    'contextMenu':{
-        'delete':"Delete",
-        'selectall':"全选",
-        'deletecode':"Delete代码",
-        'cleardoc':"清空文档",
-        'confirmclear':"确定清空当前文档么？",
-        'unlink':"Delete超链接",
-        'paragraph':"段落格式",
-        'edittable':"表格属性",
-        'aligntd':"单元格对齐方式",
-        'aligntable':'表格对齐方式',
-        'tableleft':'左浮动',
-        'tablecenter':'居中显示',
-        'tableright':'右浮动',
-        'edittd':"单元格属性",
-        'setbordervisible':'设置表格边线可见',
-        'justifyleft':'左对齐',
-        'justifyright':'右对齐',
-        'justifycenter':'居中对齐',
-        'justifyjustify':'两端对齐',
-        'table':"表格",
-        'inserttable':'插入表格',
-        'deletetable':"Delete表格",
-        'insertparagraphbefore':"前插入段落",
-        'insertparagraphafter':'后插入段落',
-        'deleterow':"Delete当前行",
-        'deletecol':"Delete当前列",
-        'insertrow':"前插入行",
-        'insertcol':"左插入列",
-        'insertrownext':'后插入行',
-        'insertcolnext':'右插入列',
-        'insertcaption':'插入表格名称',
-        'deletecaption':'Delete表格名称',
-        'inserttitle':'插入表格标题行',
-        'deletetitle':'Delete表格标题行',
-        'inserttitlecol':'插入表格标题列',
-        'deletetitlecol':'Delete表格标题列',
-        'averageDiseRow':'平均分布各行',
-        'averageDisCol':'平均分布各列',
-        'mergeright':"向右合并",
-        'mergeleft':"向左合并",
-        'mergedown':"向下合并",
-        'mergecells':"合并单元格",
-        'splittocells':"完全拆分单元格",
-        'splittocols':"拆分成列",
-        'splittorows':"拆分成行",
-        'tablesort':'表格排序',
-        'enablesort':'设置表格可排序',
-        'disablesort':'取消表格可排序',
-        'reversecurrent':'逆序当前',
-        'orderbyasc':'按ASCII字符升序',
-        'reversebyasc':'按ASCII字符降序',
-        'orderbynum':'按数值大小升序',
-        'reversebynum':'按数值大小降序',
-        'borderbk':'边框底纹',
-        'setcolor':'表格隔行变色',
-        'unsetcolor':'取消表格隔行变色',
-        'setbackground':'选区背景隔行',
-        'unsetbackground':'取消选区背景',
-        'redandblue':'红蓝相间',
-        'threecolorgradient':'三色渐变',
-        'copy':"复制(Ctrl + c)",
-        'copymsg': "浏览器不支持,请使用 'Ctrl + c'",
-        'paste':"粘贴(Ctrl + v)",
-         'pastemsg': "浏览器不支持,请使用 'Ctrl + v'"
-    },
-    'copymsg': "浏览器不支持,请使用 'Ctrl + c'",
-    'pastemsg': "浏览器不支持,请使用 'Ctrl + v'",
-    'anthorMsg':"链接",
-    'clearColor':'清空颜色',
-    'standardColor':'标准颜色',
-    'themeColor':'主题颜色',
-    'property':'属性',
-    'default':'默认',
-    'modify':'Edit',
-    'justifyleft':'左对齐',
-    'justifyright':'右对齐',
-    'justifycenter':'居中',
-    'justify':'默认',
-    'clear':'清除',
-    'anchorMsg':'锚点',
-    'delete':'Delete',
-    'clickToUpload':"点击上传",
-    'unset':'尚未设置语言文件',
-    't_row':'行',
-    't_col':'列',
-    'more':'更多',
-    'pasteOpt':'粘贴选项',
-    'pasteSourceFormat':"保留源格式",
-    'tagFormat':'只保留标签',
-    'pasteTextFormat':'只保留文本',
-    'autoTypeSet':{
-        'mergeLine':"合并空行",
-        'delLine':"清除空行",
-        'removeFormat':"清除格式",
-        'indent':"首行缩进",
-        'alignment':"对齐方式",
-        'imageFloat':"图片浮动",
-        'removeFontsize':"清除字号",
-        'removeFontFamily':"清除字体",
-        'removeHtml':"清除冗余HTML代码",
-        'pasteFilter':"粘贴过滤",
-        'run':"执行",
-        'symbol':'符号转换',
-        'bdc2sb':'全角转半角',
-        'tobdc':'半角转全角'
-    },
+    'confirmClear':"Are you sure you want to clear the current document?",
+'contextMenu':{
+'delete':"Delete",
+'selectall':"Select all",
+'deletecode':"Delete code",
+'cleardoc':"Clear document",
+'confirmclear':"Are you sure you want to clear the current document?",
+'unlink':"Delete hyperlink",
+'paragraph':"Paragraph format",
+'edittable':"Table properties",
+'aligntd':"Cell alignment",
+'aligntable':'Table alignment',
+'tableleft':'Float left',
+'tablecenter':'Center display',
+'tableright':'Float right',
+'edittd':"Cell properties",
+'setbordervisible':'Set table border visible',
+'justifyleft':'Left alignment',
+'justifyright':'Right alignment',
+'justifycenter':'Center alignment',
+'justifyjustify':'Justify',
+'table':'Table',
+'inserttable':'Insert table',
+'deletetable':'Delete table',
+'insertparagraphbefore':'Insert paragraph before',
+'insertparagraphafter':'Insert paragraph after',
+'deleterow':'Delete current row',
+'deletecol':'Delete current column',
+'insertrow':'Insert row before',
+'insertcol':'Insert column to the left',
+'insertrownext':'Insert row after',
+'insertcolnext':'Insert column to the right',
+'insertcaption':'Insert table name',
+'deletecaption':'Delete table name',
+'inserttitle':'Insert table title row',
+'deletetitle':'Delete table title row',
+'inserttitlecol':'Insert table title column',
+'deletetitlecol':'Delete table title column',
+'averageDiseRow':'Evenly distribute rows',
+'averageDisCol':'Evenly distribute columns',
+'mergeright':"Merge right",
+'mergeleft':"Merge left",
+'mergedown':"Merge down",
+       'mergecells':"Merge cells",
+'splittocells':"Completely split cells",
+'splittocols':"Split into columns",
+'splittorows':"Split into rows",
+'tablesort':'Table sorting',
+'enablesort':'Set table sorting',
+'disablesort':'Cancel table sorting',
+'reversecurrent':'Reverse current',
+'orderbyasc':'Ascending by ASCII characters',
+'reversebyasc':'Descending by ASCII characters',
+'orderbynum':'Ascending by numerical value',
+'reversebynum':'Descending by numerical value',
+'borderbk':'Border shading',
+'setcolor':'Change table color every other row',
+'unsetcolor':'Cancel table color every other row',
+'setbackground':'Selection background every other row',
+'unsetbackground':'Unset the background of the selected area',
+'redandblue':'Red and blue',
+'threecolorgradient':'Three-color gradient',
+'copy':"Copy (Ctrl + c)",
+'copymsg': "If the browser does not support it, please use 'Ctrl + c'",
+'paste':"Paste (Ctrl + v)",
+'pastemsg': "If the browser does not support it, please use 'Ctrl + v'"
+},
+'copymsg': "If the browser does not support it, please use 'Ctrl + c'",
+'pastemsg': "If the browser does not support it, please use 'Ctrl + v'",
+'anthorMsg':"Link",
+'clearColor':'Clear color',
+'standardColor':'Standard color',
+'themeColor':'Theme color',
+'property':'Property',
+'default':'Default',
+'modify':'Edit',
+'justifyleft':'Left alignment',
+'justifyright':'Right alignment',
+'justifycenter':'Center',
+'justify':'Default',
+'clear':'Clear',
+'anchorMsg':'Anchor',
+'delete':'Delete',
+'clickToUpload':"Click to upload",
+'unset':'Language file has not been set yet',
+'t_row':'Row',
+'t_col':'Column',
+'more':'More',
+'pasteOpt':'Paste options',
+'pasteSourceFormat':"Keep source format",
+'tagFormat':'Keep only tags',
+'pasteTextFormat':'Keep only text',
+'autoTypeSet':{
+'mergeLine':"Merge empty lines",
+'delLine':"Clear empty lines",
+'removeFormat':"Clear format",
+'indent':"First line indent",
+'alignment':"Alignment",
+'imageFloat':"Image float",
+'removeFontsize':"Clear font size",
+'removeFontFamily':"Clear font",
+'removeHtml':"Clear redundant HTML code",
+'pasteFilter':"Paste filter",
+'run':"Execute",
+'symbol':"Symbol conversion",
+'bdc2sb':'Full-width to half-width',
+'tobdc':'Half-width to full-width'
+},
+'background':{
+'static':{
+'lang_background_normal':'Background settings',
+'lang_background_local':'Online images',
+'lang_background_set':'Options',
+'lang_background_none':'No background color',
+'lang_background_colored':'Background color',
+'lang_background_color':'Color settings',
+'lang_background_netimg':'Network images',
+'lang_background_align':'Alignment',
+'lang_background_position':'Precise positioning',
+'repeatType':{'options':["Center", "Horizontal repeat", "Vertical repeat", "Tile", "Custom"]}
 
-    'background':{
-        'static':{
-            'lang_background_normal':'背景设置',
-            'lang_background_local':'在线图片',
-            'lang_background_set':'选项',
-            'lang_background_none':'无背景色',
-            'lang_background_colored':'有背景色',
-            'lang_background_color':'颜色设置',
-            'lang_background_netimg':'网络图片',
-            'lang_background_align':'对齐方式',
-            'lang_background_position':'精确定位',
-            'repeatType':{'options':["居中", "横向重复", "纵向重复", "平铺","自定义"]}
+},
+'noUploadImage':"No images have been uploaded yet!",
+'toggleSelect':"Click to toggle the selected state\nOriginal image size: "
+},
+//================dialog i18N=======================
+'insertimage':{
+'static':{
+'lang_tab_remote':"Insert image", //node
+'lang_tab_upload':"Local upload",
+'lang_tab_online':"Online management",
+'lang_tab_search':"Image search",
+'lang_input_url':"Address:",
+'lang_input_size':"Size:",
+'lang_input_width':"Width",
+'lang_input_height':"Height",
+'lang_input_border':"Border:",
+'lang_input_vhspace':"Margin:",
+'lang_input_title':"Description:",
+'lang_input_align':'Image floating mode:',
+'lang_imgLoading':"　Image loading...",
+'lang_start_upload':"Start uploading",
+'lock':{'title':"Lock aspect ratio"}, //Properties
+'searchType':{'title':"Image type", 'options':["News", "Wallpaper", "Emoji", "Avatar"]}, //Select option
+'searchTxt':{'value':"Please enter the search keyword"},
+'searchBtn':{'value':"Baidu search"},
+'searchReset':{'value':"Clear search"},
+'noneAlign':{'title':'No floating'},
+'leftAlign':{'title':'Left floating'},
+'rightAlign':{'title':'Right floating'},
+'centerAlign':{'title':'Center and occupy one line'}
+},
+'uploadSelectFile':'Click to select an image',
+'uploadAddFile':'Continue to add',
+'uploadStart':'Start uploading',
+'uploadPause':'Pause uploading',
+'uploadContinue':'Continue uploading',
+'uploadRetry':'Retry uploading',
+'uploadDelete':'Delete',
+'uploadTurnLeft':'Rotate left',
+'uploadTurnRight':'Rotate right',
+'uploadPreview':'Previewing',
+'uploadNoPreview':'Cannot preview',
+'updateStatusReady': 'Selected _ images, total _KB. ',
+'updateStatusConfirm': '_ photos uploaded successfully, _ photos failed to upload',
+'updateStatusFinish': '_ photos in total (_KB), _ photos uploaded successfully',
+'updateStatusError': ', _ photos failed to upload. ',
+'errorNotSupport': 'WebUploader does not support your browser! If you are using IE browser, please try to upgrade the flash player. ',
+'errorLoadConfig': 'The backend configuration items are not loaded normally, and the upload plug-in cannot be used normally! ',
+'errorExceedSize':'File size exceeded',
+'errorFileType':'File format not allowed',
+'errorInterrupt':'File transfer interrupted',
+'errorUploadRetry':'Upload failed, please try again',
+'errorHttp':'http request error',
+'errorServerUpload':'Server returned an error',
+'remoteLockError':"Incorrect width and height, cannot be set",
+'numError':"Please enter the correct length or width value! For example: 123, 400",
+'imageUrlError':"Unallowed image format or image domain!",
+'imageLoadError':"Image loading failed! Please check the link address or network status!",
+'searchRemind':"Please enter the search keyword",
+'searchLoading':"Image loading, please wait...",
+'searchRetry':" :(, Sorry, no image found! Please try again!"
+},
+  'attachment':{
+'static':{
+'lang_tab_upload': 'Upload attachment',
+'lang_tab_online': 'Online attachment',
+'lang_start_upload':"Start uploading",
+'lang_drop_remind':"You can drag files here, up to 100 files can be selected at a time"
+},
+'uploadSelectFile':'Click to select a file',
+'uploadAddFile':'Continue adding',
+'uploadStart':'Start uploading',
+'uploadPause':'Pause uploading',
+'uploadContinue':'Continue uploading',
+'uploadRetry':'Retry uploading',
+'uploadDelete':'Delete',
+'uploadTurnLeft':'Rotate left',
+'uploadTurnRight':'Rotate right',
+'uploadPreview':'Previewing',
+'updateStatusReady': 'Selected _ files, total _KB.',
+'updateStatusConfirm': 'Successfully uploaded _ files, _ files failed to upload',
+'updateStatusFinish': 'Total _ (_KB), _ uploaded successfully',
+'updateStatusError': ', _ files failed to upload.',
+'errorNotSupport': 'WebUploader does not support your browser! If you are using IE browser, please try to upgrade the flash player.',
+'errorLoadConfig': 'The backend configuration items are not loaded normally, and the upload plug-in cannot be used normally! ',
+'errorExceedSize':'File size exceeded',
+'errorFileType':'File format not allowed',
+'errorInterrupt':'File transfer interrupted',
+'errorUploadRetry':'Upload failed, please try again',
+'errorHttp':'http request error',
+'errorServerUpload':'Server returned an error'
+},
+'insertvideo':{
+'static':{
+'lang_tab_insertV':"Insert video",
+'lang_tab_searchV':"Search video",
+'lang_tab_uploadV':"Upload video",
+'lang_video_url':"Video URL",
+'lang_video_size':"Video size",
+'lang_videoW':"Width",
+'lang_videoH':"Height",
+'lang_alignment':"Alignment",
+'videoSearchTxt':{'value':"Please enter the search keyword!"},
+'videoType':{'options':["All", "Popular", "Entertainment", "Funny", "Sports", "Technology", "Variety"]},
+'videoSearchBtn':{'value':"Baidu search"},
+'videoSearchReset':{'value':"Clear results"},
 
-        },
-        'noUploadImage':"当前未上传过任何图片！",
-        'toggleSelect':"单击可切换选中状态\n原图尺寸: "
-    },
-    //===============dialog i18N=======================
-    'insertimage':{
-        'static':{
-            'lang_tab_remote':"插入图片", //节点
-            'lang_tab_upload':"本地上传",
-            'lang_tab_online':"在线管理",
-            'lang_tab_search':"图片搜索",
-            'lang_input_url':"地 址：",
-            'lang_input_size':"大 小：",
-            'lang_input_width':"宽度",
-            'lang_input_height':"高度",
-            'lang_input_border':"边 框：",
-            'lang_input_vhspace':"边 距：",
-            'lang_input_title':"描 述：",
-            'lang_input_align':'图片浮动方式：',
-            'lang_imgLoading':"　图片加载中……",
-            'lang_start_upload':"开始上传",
-            'lock':{'title':"锁定宽高比例"}, //属性
-            'searchType':{'title':"图片类型", 'options':["新闻", "壁纸", "表情", "头像"]}, //select的option
-            'searchTxt':{'value':"请输入搜索关键词"},
-            'searchBtn':{'value':"百度一下"},
-            'searchReset':{'value':"清空搜索"},
-            'noneAlign':{'title':'无浮动'},
-            'leftAlign':{'title':'左浮动'},
-            'rightAlign':{'title':'右浮动'},
-            'centerAlign':{'title':'居中独占一行'}
-        },
-        'uploadSelectFile':'点击选择图片',
-        'uploadAddFile':'继续添加',
-        'uploadStart':'开始上传',
-        'uploadPause':'暂停上传',
-        'uploadContinue':'继续上传',
-        'uploadRetry':'重试上传',
-        'uploadDelete':'Delete',
-        'uploadTurnLeft':'向左旋转',
-        'uploadTurnRight':'向右旋转',
-        'uploadPreview':'预览中',
-        'uploadNoPreview':'不能预览',
-        'updateStatusReady': '选中_张图片，共_KB。',
-        'updateStatusConfirm': '已成功上传_张照片，_张照片上传失败',
-        'updateStatusFinish': '共_张（_KB），_张上传成功',
-        'updateStatusError': '，_张上传失败。',
-        'errorNotSupport': 'WebUploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器。',
-        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！',
-        'errorExceedSize':'文件大小超出',
-        'errorFileType':'文件格式不允许',
-        'errorInterrupt':'文件传输中断',
-        'errorUploadRetry':'上传失败，请重试',
-        'errorHttp':'http请求错误',
-        'errorServerUpload':'服务器返回出错',
-        'remoteLockError':"宽高不正确,不能所定比例",
-        'numError':"请输入正确的长度或者宽度值！例如：123，400",
-        'imageUrlError':"不允许的图片格式或者图片域！",
-        'imageLoadError':"图片加载失败！请检查链接地址或网络状态！",
-        'searchRemind':"请输入搜索关键词",
-        'searchLoading':"图片加载中，请稍后……",
-        'searchRetry':" :( ，抱歉，没有找到图片！请重试一次！"
-    },
-    'attachment':{
-        'static':{
-            'lang_tab_upload': '上传附件',
-            'lang_tab_online': '在线附件',
-            'lang_start_upload':"开始上传",
-            'lang_drop_remind':"可以将文件拖到这里，单次最多可选100个文件"
-        },
-        'uploadSelectFile':'点击选择文件',
-        'uploadAddFile':'继续添加',
-        'uploadStart':'开始上传',
-        'uploadPause':'暂停上传',
-        'uploadContinue':'继续上传',
-        'uploadRetry':'重试上传',
-        'uploadDelete':'Delete',
-        'uploadTurnLeft':'向左旋转',
-        'uploadTurnRight':'向右旋转',
-        'uploadPreview':'预览中',
-        'updateStatusReady': '选中_个文件，共_KB。',
-        'updateStatusConfirm': '已成功上传_个文件，_个文件上传失败',
-        'updateStatusFinish': '共_个（_KB），_个上传成功',
-        'updateStatusError': '，_张上传失败。',
-        'errorNotSupport': 'WebUploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器。',
-        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！',
-        'errorExceedSize':'文件大小超出',
-        'errorFileType':'文件格式不允许',
-        'errorInterrupt':'文件传输中断',
-        'errorUploadRetry':'上传失败，请重试',
-        'errorHttp':'http请求错误',
-        'errorServerUpload':'服务器返回出错'
-    },
-    'insertvideo':{
-        'static':{
-            'lang_tab_insertV':"插入视频",
-            'lang_tab_searchV':"搜索视频",
-            'lang_tab_uploadV':"上传视频",
-            'lang_video_url':"视频网址",
-            'lang_video_size':"视频尺寸",
-            'lang_videoW':"宽度",
-            'lang_videoH':"高度",
-            'lang_alignment':"对齐方式",
-            'videoSearchTxt':{'value':"请输入搜索关键字！"},
-            'videoType':{'options':["全部", "热门", "娱乐", "搞笑", "体育", "科技", "综艺"]},
-            'videoSearchBtn':{'value':"百度一下"},
-            'videoSearchReset':{'value':"清空结果"},
+'lang_input_fileStatus':'No file is currently uploaded',
+'startUpload':{'style':"background:url(upload.png) no-repeat;"},
 
-            'lang_input_fileStatus':' 当前未上传文件',
-            'startUpload':{'style':"background:url(upload.png) no-repeat;"},
+'lang_upload_size':"Video size",
+'lang_upload_width':"Width",
+'lang_upload_height':"Height",
+'lang_upload_alignment':"Alignment",
+'lang_format_advice':"It is recommended to use mp4 format."
 
-            'lang_upload_size':"视频尺寸",
-            'lang_upload_width':"宽度",
-            'lang_upload_height':"高度",
-            'lang_upload_alignment':"对齐方式",
-            'lang_format_advice':"建议使用mp4格式."
+},
+'numError':"Please enter a correct value, such as 123,400",
+'floatLeft':"Float left",
+'floatRight':"Float right",
+'"default"':"Default",
+'block':"One line",
+'urlError':"The video address you entered is incorrect, please check and try again!",
+'loading':" Video loading, please wait...",
+'clickToSelect':"Click to select",
+'goToSource':'Go to source video',
+'noVideo':" &nbsp; &nbsp; Sorry, the corresponding video cannot be found, please try again! ",
 
-        },
-        'numError':"请输入正确的数值，如123,400",
-        'floatLeft':"左浮动",
-        'floatRight':"右浮动",
-        '"default"':"默认",
-        'block':"独占一行",
-        'urlError':"输入的视频地址有误，请检查后再试！",
-        'loading':" &nbsp;视频加载中，请等待……",
-        'clickToSelect':"点击选中",
-        'goToSource':'访问源视频',
-        'noVideo':" &nbsp; &nbsp;抱歉，找不到对应的视频，请重试！",
+'browseFiles':'Browse files',
+'uploadSuccess':'Upload successful!',
+'delSuccessFile':'Remove from the success queue',
+'delFailSaveFile':'Remove failed save files',
+'statusPrompt':' Files uploaded! ',
+'flashVersionError':'The current Flash version is too low, please update FlashPlayer and try again!',
+'flashLoadingError':'Flash loading failed! Please check the path or network status',
+'fileUploadReady':'Waiting for upload...',
+'delUploadQueue':'Remove from the upload queue',
+'limitPrompt1':'Cannot select more than',
+'limitPrompt2':'Files! Please reselect!',
+'delFailFile':'Remove failed files',
+'fileSizeLimit':'File size exceeds the limit! ',
+'emptyFile':'Empty file cannot be uploaded! ',
+'fileTypeError':'File type is not allowed! ',
+'unknownError':'Unknown error! ',
+'fileUploading':'Uploading, please wait...',
+'cancelUpload':'Cancel upload',
+'netError':'Network error',
+'failUpload':'Upload failed!',
+'serverIOError':'Server IO error! ',
+'noAuthority':'No authority! ',
+'fileNumLimit':'Upload number limit',
+'failCheck':'Verification failed, this upload is skipped! ',
+'fileCanceling':'Canceling, please wait...',
+'stopUploading':'Upload has stopped...',
 
-        'browseFiles':'浏览文件',
-        'uploadSuccess':'上传成功!',
-        'delSuccessFile':'从成功队列中移除',
-        'delFailSaveFile':'移除保存失败文件',
-        'statusPrompt':' 个文件已上传！ ',
-        'flashVersionError':'当前Flash版本过低，请更新FlashPlayer后重试！',
-        'flashLoadingError':'Flash加载失败!请检查路径或网络状态',
-        'fileUploadReady':'等待上传……',
-        'delUploadQueue':'从上传队列中移除',
-        'limitPrompt1':'单次不能选择超过',
-        'limitPrompt2':'个文件！请重新选择！',
-        'delFailFile':'移除失败文件',
-        'fileSizeLimit':'文件大小超出限制！',
-        'emptyFile':'空文件无法上传！',
-        'fileTypeError':'文件类型不允许！',
-        'unknownError':'未知错误！',
-        'fileUploading':'上传中，请等待……',
-        'cancelUpload':'取消上传',
-        'netError':'网络错误',
-        'failUpload':'上传失败!',
-        'serverIOError':'服务器IO错误！',
-        'noAuthority':'无权限！',
-        'fileNumLimit':'上传个数限制',
-        'failCheck':'验证失败，本次上传被跳过！',
-        'fileCanceling':'取消中，请等待……',
-        'stopUploading':'上传已停止……',
-
-        'uploadSelectFile':'点击选择文件',
-        'uploadAddFile':'继续添加',
-        'uploadStart':'开始上传',
-        'uploadPause':'暂停上传',
-        'uploadContinue':'继续上传',
-        'uploadRetry':'重试上传',
-        'uploadDelete':'Delete',
-        'uploadTurnLeft':'向左旋转',
-        'uploadTurnRight':'向右旋转',
-        'uploadPreview':'预览中',
-        'updateStatusReady': '选中_个文件，共_KB。',
-        'updateStatusConfirm': '成功上传_个，_个失败',
-        'updateStatusFinish': '共_个(_KB)，_个成功上传',
-        'updateStatusError': '，_张上传失败。',
-        'errorNotSupport': 'WebUploader 不支持您的浏览器！如果你使用的是IE浏览器，请尝试升级 flash 播放器。',
-        'errorLoadConfig': '后端配置项没有正常加载，上传插件不能正常使用！',
-        'errorExceedSize':'文件大小超出',
-        'errorFileType':'文件格式不允许',
-        'errorInterrupt':'文件传输中断',
-        'errorUploadRetry':'上传失败，请重试',
-        'errorHttp':'http请求错误',
-        'errorServerUpload':'服务器返回出错'
-    },
-    'webapp':{
-        'tip1':"本功能由百度APP提供，如看到此页面，请各位站长首先申请百度APPKey!",
-        'tip2':"申请完成之后请至ueditor.config.js中配置获得的appkey! ",
-        'applyFor':"点此申请",
-        'anthorApi':"百度API"
-    },
-    'template':{
-        'static':{
-            'lang_template_bkcolor':'背景颜色',
-            'lang_template_clear' : '保留原有内容',
-            'lang_template_select' : '选择模板'
-        },
-        'blank':"空白文档",
-        'blog':"博客文章",
-        'resume':"个人简历",
-        'richText':"图文混排",
-        'sciPapers':"科技论文"
+'uploadSelectFile':'Click to select a file',
+'uploadAddFile':'Continue adding',
+'uploadStart':'Start uploading',
+'uploadPause':'Pause uploading',
+'uploadContinue':'Continue uploading',
+'uploadRetry':'Retry uploading',
+'uploadDelete':'Delete',
+'uploadTurnLeft':'Rotate left',
+'uploadTurnRight':'Rotate right',
+'uploadPreview':'Previewing',
+'updateStatusReady': 'Selected _ files, total _KB.',
+'updateStatusConfirm': 'Uploaded _ successfully, _ failed',
+'updateStatusFinish': 'Total _ (_KB), _ successfully uploaded',
+'updateStatusError': ', _ failed to upload.',
+'errorNotSupport': 'WebUploader does not support your browser! If you are using IE browser, please try to upgrade the flash player. ',
+'errorLoadConfig': 'The backend configuration item is not loaded normally, and the upload plug-in cannot be used normally! ',
+'errorExceedSize':'File size exceeded',
+'errorFileType':'File format not allowed',
+'errorInterrupt':'File transfer interrupted',
+'errorUploadRetry':'Upload failed, please try again',
+'errorHttp':'http request error',
+'errorServerUpload':'Server returned an error'
+},
+'webapp':{
+'tip1':"This function is provided by Baidu APP. If you see this page, please apply for Baidu APPKey first!",
+'tip2':"After the application is completed, please configure the obtained appkey in ueditor.config.js! ",
+'applyFor':"Click here to apply",
+'anthorApi':"Baidu API"
+},
+'template':{
+'static':{
+'lang_template_bkcolor':'Background color',
+'lang_template_clear' : 'Keep original content',
+'lang_template_select' : 'Select template'
+},
+'blank':"Blank document",
+'blog':"Blog post",
+'resume':"Resume",
+'richText':"Mixed text and images",
+'sciPapers':"Science and technology papers"
 
 
-    },
-    'scrawl':{
+  },
+'scrawl':{
+'static':{
+'lang_input_previousStep':"Previous step",
+'lang_input_nextsStep':"Next step",
+'lang_input_clear':'Clear',
+'lang_input_addPic':'Add background',
+'lang_input_ScalePic':'Scale background',
+'lang_input_removePic':'Delete background',
+'J_imgTxt':{title:'Add background image'}
+},
+'noScarwl':"No drawing yet, a blank sheet of paper~",
+'scrawlUpLoading':"Uploading graffiti, don't worry~",
+'continueBtn':"Continue",
+'imageError':"Oops, failed to read the image!",
+'backgroundUploading':'Uploading background image, don't worry~'
+},
+'music':{
+'static':{
+'lang_input_tips':"Enter singer/song/album to search for the music you are interested in!",
+'J_searchBtn':{value:'Search for songs'}
+},
+'emptyTxt':'No relevant music results were found. Please try another keyword. ',
+'chapter':'songs',
+'singer':'singer',
+'special':'album',
+'listenTest':'listen'
+},
+'anchor':{
+'static':{
+'lang_input_anchorName':'anchor name:'
+}
+},
+'charts':{
+'static':{
+'lang_data_source':'data source:',
+'lang_chart_format':'chart format:',
+'lang_data_align':'data alignment',
+'lang_chart_align_same':'data source is consistent with the chart's X-axis and Y-axis',
+'lang_chart_align_reverse':'data source is opposite to the chart's X-axis and Y-axis',
+'lang_chart_title':'chart title',
+'lang_chart_main_title': 'Main title:',
+'lang_chart_sub_title': 'Subtitle:',
+'lang_chart_x_title': 'X-axis title:',
+'lang_chart_y_title': 'Y-axis title:',
+'lang_chart_tip': 'Prompt text',
+'lang_cahrt_tip_prefix': 'Prompt text prefix:',
+'lang_cahrt_tip_description': 'Only valid for pie charts, when the mouse moves to the corresponding block in the pie chart, the prefix of the text in the prompt box',
+'lang_chart_data_unit': 'Data unit',
+'lang_chart_data_unit_title': 'Unit:',
+'lang_chart_data_unit_description': 'The unit of the data displayed on each data point, for example: the unit of temperature is ℃',
+'lang_chart_type': 'Chart type:',
+'lang_prev_btn': 'Previous',
+'lang_next_btn': 'Next'
+}
+},
+'emotion':{
+'static':{
+'lang_input_choice':'Selected',
+'lang_input_Tuzki':'Tuzki',
+'lang_input_BOBO':'BOBO',
+'lang_input_lvdouwa':'Mung Bean Frog',
+'lang_input_babyCat':'baby cat',
+'lang_input_bubble':'Bubble',
+'lang_input_youa':'Yes'
+}
+},
+'gmap':{
         'static':{
-            'lang_input_previousStep':"上一步",
-            'lang_input_nextsStep':"下一步",
-            'lang_input_clear':'清空',
-            'lang_input_addPic':'添加背景',
-            'lang_input_ScalePic':'缩放背景',
-            'lang_input_removePic':'Delete背景',
-            'J_imgTxt':{title:'添加背景图片'}
-        },
-        'noScarwl':"尚未作画，白纸一张~",
-        'scrawlUpLoading':"涂鸦上传中,别急哦~",
-        'continueBtn':"继续",
-        'imageError':"糟糕，图片读取失败了！",
-        'backgroundUploading':'背景图片上传中,别急哦~'
-    },
-    'music':{
-        'static':{
-            'lang_input_tips':"输入歌手/歌曲/专辑，搜索您感兴趣的音乐！",
-            'J_searchBtn':{value:'搜索歌曲'}
-        },
-        'emptyTxt':'未搜索到相关音乐结果，请换一个关键词试试。',
-        'chapter':'歌曲',
-        'singer':'歌手',
-        'special':'专辑',
-        'listenTest':'试听'
-    },
-    'anchor':{
-        'static':{
-            'lang_input_anchorName':'锚点名字：'
-        }
-    },
-    'charts':{
-        'static':{
-            'lang_data_source':'数据源：',
-            'lang_chart_format': '图表格式：',
-            'lang_data_align': '数据对齐方式',
-            'lang_chart_align_same': '数据源与图表X轴Y轴一致',
-            'lang_chart_align_reverse': '数据源与图表X轴Y轴相反',
-            'lang_chart_title': '图表标题',
-            'lang_chart_main_title': '主标题：',
-            'lang_chart_sub_title': '子标题：',
-            'lang_chart_x_title': 'X轴标题：',
-            'lang_chart_y_title': 'Y轴标题：',
-            'lang_chart_tip': '提示文字',
-            'lang_cahrt_tip_prefix': '提示文字前缀：',
-            'lang_cahrt_tip_description': '仅饼图有效， 当鼠标移动到饼图中相应的块上时，提示框内的文字的前缀',
-            'lang_chart_data_unit': '数据单位',
-            'lang_chart_data_unit_title': '单位：',
-            'lang_chart_data_unit_description': '显示在每个数据点上的数据的单位， 比如： 温度的单位 ℃',
-            'lang_chart_type': '图表类型：',
-            'lang_prev_btn': '上一个',
-            'lang_next_btn': '下一个'
-        }
-    },
-    'emotion':{
-        'static':{
-            'lang_input_choice':'精选',
-            'lang_input_Tuzki':'兔斯基',
-            'lang_input_BOBO':'BOBO',
-            'lang_input_lvdouwa':'绿豆蛙',
-            'lang_input_babyCat':'baby猫',
-            'lang_input_bubble':'泡泡',
-            'lang_input_youa':'有啊'
-        }
-    },
-    'gmap':{
-        'static':{
-            'lang_input_address':'地址',
-            'lang_input_search':'搜索',
-            'address':{value:"北京"}
-        },
-        searchError:'无法定位到该地址!'
-    },
-    'help':{
-        'static':{
-            'lang_input_about':'关于UEditor',
-            'lang_input_shortcuts':'快捷键',
-            'lang_input_introduction':'UEditor是由百度web前端研发部开发的所见即所得富文本web编辑器，具有轻量，可定制，注重用户体验等特点。开源基于BSD协议，允许自由使用和Edit代码。',
-            'lang_Txt_shortcuts':'快捷键',
-            'lang_Txt_func':'功能',
-            'lang_Txt_bold':'给选中字设置为加粗',
-            'lang_Txt_copy':'复制选中内容',
-            'lang_Txt_cut':'剪切选中内容',
-            'lang_Txt_Paste':'粘贴',
-            'lang_Txt_undo':'重新执行上次操作',
-            'lang_Txt_redo':'撤销上一次操作',
-            'lang_Txt_italic':'给选中字设置为斜体',
-            'lang_Txt_underline':'给选中字加下划线',
-            'lang_Txt_selectAll':'全部选中',
-            'lang_Txt_visualEnter':'软回车',
-            'lang_Txt_fullscreen':'全屏'
-        }
-    },
-    'insertframe':{
-        'static':{
-            'lang_input_address':'地址：',
-            'lang_input_width':'宽度：',
-            'lang_input_height':'高度：',
-            'lang_input_isScroll':'允许滚动条：',
-            'lang_input_frameborder':'显示框架边框：',
-            'lang_input_alignMode':'对齐方式：',
-            'align':{title:"对齐方式", options:["默认", "左对齐", "右对齐", "居中"]}
-        },
-        'enterAddress':'请输入地址!'
-    },
-    'link':{
-        'static':{
-            'lang_input_text':'文本内容：',
-            'lang_input_url':'链接地址：',
-            'lang_input_title':'标题：',
-            'lang_input_target':'是否在新窗口打开：'
-        },
-        'validLink':'只支持选中一个链接时生效',
-        'httpPrompt':'您输入的超链接中不包含http等协议名称，默认将为您添加http://前缀'
-    },
-    'map':{
-        'static':{
-            lang_city:"城市",
-            lang_address:"地址",
-            city:{value:"北京"},
-            lang_search:"搜索",
-            lang_dynamicmap:"插入动态地图"
-        },
-        cityMsg:"请选择城市",
-        errorMsg:"抱歉，找不到该位置！"
-    },
-    'searchreplace':{
-        'static':{
-            lang_tab_search:"查找",
-            lang_tab_replace:"替换",
-            lang_search1:"查找",
-            lang_search2:"查找",
-            lang_replace:"替换",
-            lang_searchReg:'支持正则表达式，添加前后斜杠标示为正则表达式，例如“/表达式/”',
-            lang_searchReg1:'支持正则表达式，添加前后斜杠标示为正则表达式，例如“/表达式/”',
-            lang_case_sensitive1:"区分大小写",
-            lang_case_sensitive2:"区分大小写",
-            nextFindBtn:{value:"下一个"},
-            preFindBtn:{value:"上一个"},
-            nextReplaceBtn:{value:"下一个"},
-            preReplaceBtn:{value:"上一个"},
-            repalceBtn:{value:"替换"},
-            repalceAllBtn:{value:"全部替换"}
-        },
-        getEnd:"已经搜索到文章末尾！",
-        getStart:"已经搜索到文章头部",
-        countMsg:"总共替换了{#count}处！"
-    },
-    'snapscreen':{
-        'static':{
-            lang_showMsg:"截图功能需要首先安装UEditor截图插件！ ",
-            lang_download:"点此下载",
-            lang_step1:"第一步，下载UEditor截图插件并运行安装。",
-            lang_step2:"第二步，插件安装完成后即可使用，如不生效，请重启浏览器后再试！"
-        }
-    },
-    'spechars':{
-        'static':{},
-        tsfh:"特殊字符",
-        lmsz:"罗马字符",
-        szfh:"数学字符",
-        rwfh:"日文字符",
-        xlzm:"希腊字母",
-        ewzm:"俄文字符",
-        pyzm:"拼音字母",
-        yyyb:"英语音标",
-        zyzf:"其他"
-    },
-    'edittable':{
-        'static':{
-            'lang_tableStyle':'表格样式',
-            'lang_insertCaption':'添加表格名称行',
-            'lang_insertTitle':'添加表格标题行',
-            'lang_insertTitleCol':'添加表格标题列',
-            'lang_orderbycontent':"使表格内容可排序",
-            'lang_tableSize':'自动调整表格尺寸',
-            'lang_autoSizeContent':'按表格文字自适应',
-            'lang_autoSizePage':'按页面宽度自适应',
-            'lang_example':'示例',
-            'lang_borderStyle':'表格边框',
-            'lang_color':'颜色:'
-        },
-        captionName:'表格名称',
-        titleName:'标题',
-        cellsName:'内容',
-        errorMsg:'有合并单元格，不可排序'
-    },
-    'edittip':{
-        'static':{
-            lang_delRow:'Delete整行',
-            lang_delCol:'Delete整列'
-        }
-    },
-    'edittd':{
-        'static':{
-            lang_tdBkColor:'背景颜色:'
-        }
-    },
-    'formula':{
-        'static':{
-        }
-    },
-    'wordimage':{
-        'static':{
-            lang_resave:"转存步骤",
-            uploadBtn:{src:"upload.png",alt:"上传"},
-            clipboard:{style:"background: url(copy.png) -153px -1px no-repeat;"},
-            lang_step:"1、点击顶部复制按钮，将地址复制到剪贴板；2、点击添加照片按钮，在弹出的对话框中使用Ctrl+V粘贴地址；3、点击打开后选择图片上传流程。"
-        },
-        'fileType':"图片",
-        'flashError':"FLASH初始化失败，请检查FLASH插件是否正确安装！",
-        'netError':"网络连接错误，请重试！",
-        'copySuccess':"图片地址已经复制！",
-        'flashI18n':{} //留空默认中文
-    },
+'lang_input_address':'Address',
+'lang_input_search':'Search',
+'address':{value:"Beijing"}
+},
+searchError:'Unable to locate the address!'
+},
+'help':{
+'static':{
+'lang_input_about':'About UEditor',
+'lang_input_shortcuts':'Shortcuts',
+'lang_input_introduction':'UEditor is a WYSIWYG rich text web editor developed by Baidu Web Front-end R&D Department. It is lightweight, customizable, and focuses on user experience. Open source based on BSD protocol, allowing free use and Edit code. ',
+'lang_Txt_shortcuts':'Shortcut keys',
+'lang_Txt_func':'Function',
+'lang_Txt_bold':'Set the selected text to bold',
+'lang_Txt_copy':'Copy the selected content',
+'lang_Txt_cut':'Cut the selected content',
+'lang_Txt_Paste':'Paste',
+'lang_Txt_undo':'Re-execute the last operation',
+'lang_Txt_redo':'Undo the last operation',
+'lang_Txt_italic':'Set the selected text to italics',
+'lang_Txt_underline':'Underline the selected text',
+'lang_Txt_selectAll':'Select all',
+'lang_Txt_visualEnter':'Soft return',
+'lang_Txt_fullscreen':'Full screen'
+}
+},
+'insertframe':{
+'static':{
+'lang_input_address':'Address:',
+'lang_input_width':'Width:',
+'lang_input_height':'Height:',
+'lang_input_isScroll':'Allow scrollbar:',
+'lang_input_frameborder':'Show frame border:',
+'lang_input_alignMode':'Alignment:',
+'align':{title:"Alignment", options:["Default", "Left", "Right", "Center"]}
+},
+'enterAddress':'Please enter the address!'
+},
+'link':{
+'static':{
+'lang_input_text':'Text content:',
+'lang_input_url':'Link address:',
+'lang_input_title':'Title:',
+'lang_input_target':'Open in a new window:'
+},
+'validLink':'Only supports when one link is selected',
+'httpPrompt':'The hyperlink you entered does not contain protocol names such as http, and the http:// prefix will be added by default'
+},
+'map':{
+'static':{
+lang_city:"City",
+lang_address:"Address",
+city:{value:"Beijing"},
+lang_search:"Search",
+lang_dynamicmap:"Insert dynamic map"
+},
+cityMsg:"Please select a city",
+errorMsg:"Sorry, the location cannot be found! "
+},
+'searchreplace':{
+'static':{
+lang_tab_search:"Find",
+lang_tab_replace:"Replace",
+lang_search1:"Find",
+lang_search2:"Find",
+lang_replace:"Replace",
+lang_searchReg:'Support regular expressions, add front and back slashes to mark as regular expressions, such as "/expression/"',
+lang_searchReg1:'Support regular expressions, add front and back slashes to mark as regular expressions, such as "/expression/"',
+lang_case_sensitive1:"Case sensitive",
+lang_case_sensitive2:"Case sensitive",
+nextFindBtn:{value:"Next"},
+preFindBtn:{value:"Previous"},
+nextReplaceBtn:{value:"Next"},
+preReplaceBtn:{value:"Previous"},
+repalceBtn:{value:"Replace"},
+repalceAllBtn:{value:"Replace all"}
+},
+getEnd:"The end of the article has been searched!",
+getStart:"The head of the article has been searched",
+countMsg:"A total of {#count} places have been replaced!"
+},
+'snapscreen':{
+'static':{
+lang_showMsg:"The screenshot function requires the installation of the UEditor screenshot plug-in first! ",
+lang_download:"Click here to download",
+lang_step1:"The first step is to download the UEditor screenshot plug-in and run the installation.",
+lang_step2:"The second step is to use the plug-in after installation. If it does not work, please restart the browser and try again! "
+}
+},
+'spechars':{
+'static':{},
+tsfh:"Special characters",
+lmsz:"Roman characters",
+szfh:"Mathematical characters",
+rwfh:"Japanese characters",
+xlzm:"Greek letters",
+ewzm:"Russian characters",
+pyzm:"Pinyin letters",
+yyyb:"English phonetic symbols",
+zyzf:"Others"
+},
+'edittable':{
+'static':{
+'lang_tableStyle':'Table style',
+'lang_insertCaption':'Add table name row',
+'lang_insertTitle':'Add table title row',
+'lang_insertTitleCol':'Add table title column',
+'lang_orderbycontent':"Make table content sortable",
+'lang_tableSize':'Automatically adjust table size',
+'lang_autoSizeContent':'Adapt to table text',
+'lang_autoSizePage':'Adapt to page width',
+'lang_example':'Example',
+'lang_borderStyle':'Table border',
+'lang_color':'Color:'
+},
+captionName:'Table name',
+titleName:'Title',
+cellsName:'Content',
+errorMsg:'There are merged cells and cannot be sorted'
+},
+'edittip':{
+'static':{
+lang_delRow:'Delete the entire row',
+lang_delCol:'Delete the entire column'
+}
+},
+'edittd':{
+'static':{
+lang_tdBkColor:'Background color:'
+}
+},
+'formula':{
+'static':{
+}
+},
+'wordimage':{
+'static':{
+lang_resave:"Save steps",
+uploadBtn:{src:"upload.png",alt:"Upload"},
+clipboard:{style:"background: url(copy.png) -153px -1px no-repeat;"},
+lang_step:"1. Click the top copy button to copy the address to the clipboard; 2. Click the add photo button and use Ctrl+V to paste the address in the pop-up dialog box; 3. Click open and select the image upload process."
+},
+'fileType':"Image",
+'flashError':"FLASH initialization failed, please check whether the FLASH plug-in is installed correctly!",
+'netError':"Network connection error, please try again!",
+'copySuccess':"The image address has been copied!",
+'flashI18n':{} //Leave blank for default Chinese
+},
     'autosave': {
-        'saving':'保存中...',
-        'success':'本地保存成功'
-    }
+'saving':'Saving...',
+'success':'Local saving successful'
+}
 };
