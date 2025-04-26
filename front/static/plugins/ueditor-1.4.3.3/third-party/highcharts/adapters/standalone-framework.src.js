@@ -1,13 +1,4 @@
-/**
- * @license Highcharts JS v3.0.6 (2013-10-04)
- *
- * Standalone Highcharts Framework
- *
- * License: MIT License
- */
 
-
-/*global Highcharts */
 var HighchartsAdapter = (function () {
 
 var UNDEFINED,
