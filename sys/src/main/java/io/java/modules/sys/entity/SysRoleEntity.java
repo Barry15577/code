@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 角色
+ * Role
  *
  * @author Jiasi Lu
  */
@@ -22,34 +22,33 @@ public class SysRoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * 角色ID
-	 */
-	@TableId
-	private Long roleId;
+* Role ID
+*/
+@TableId
+private Long roleId;
 
-	/**
-	 * 角色名称
-	 */
-	@NotBlank(message="角色名称不能为空")
-	private String roleName;
+/**
+* Role name
+*/
+@NotBlank(message="Role name cannot be empty")
+private String roleName;
 
-	/**
-	 * 备注
-	 */
-	private String remark;
-	
-	/**
-	 * 创建者ID
-	 */
-	private Long createUserId;
+/**
+* Remarks
+*/
+private String remark;
 
-	@TableField(exist=false)
-	private List<Long> menuIdList;
-	
-	/**
-	 * 创建时间
-	 */
-	private Date createTime;
+/**
+* Creator ID
+*/
+private Long createUserId;
 
+@TableField(exist=false)
+private List<Long> menuIdList;
+
+/**
+* Creation time
+*/
+private Date createTime;
 	
 }
