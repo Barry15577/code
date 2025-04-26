@@ -1,11 +1,4 @@
-/*
- Data plugin for Highcharts
 
- (c) 2012-2013 Torstein Hønsi
- Last revision 2013-06-07
-
- License: www.highcharts.com/license
-*/
 (function(h){var k=h.each,m=function(b,a){this.init(b,a)};h.extend(m.prototype,{init:function(b,a){this.options=b;this.chartOptions=a;this.columns=b.columns||this.rowsToColumns(b.rows)||[];this.columns.length?this.dataFound():(this.parseCSV(),this.parseTable(),this.parseGoogleSpreadsheet())},getColumnDistribution:function(){var b=this.chartOptions,a=b&&b.chart&&b.chart.type,c=[];k(b&&b.series||[],function(b){c.push((h.seriesTypes[b.type||a||"line"].prototype.pointArrayMap||[0]).length)});this.valueCount=
 {global:(h.seriesTypes[a||"line"].prototype.pointArrayMap||[0]).length,individual:c}},dataFound:function(){this.parseTypes();this.findHeaderRow();this.parsed();this.complete()},parseCSV:function(){var b=this,a=this.options,c=a.csv,d=this.columns,f=a.startRow||0,i=a.endRow||Number.MAX_VALUE,j=a.startColumn||0,e=a.endColumn||Number.MAX_VALUE,g=0;c&&(c=c.replace(/\r\n/g,"\n").replace(/\r/g,"\n").split(a.lineDelimiter||"\n"),k(c,function(c,h){var n=b.trim(c),p=n.indexOf("#")===0;h>=f&&h<=i&&!p&&n!==""&&
 (n=c.split(a.itemDelimiter||","),k(n,function(b,a){a>=j&&a<=e&&(d[a-j]||(d[a-j]=[]),d[a-j][g]=b)}),g+=1)}),this.dataFound())},parseTable:function(){var b=this.options,a=b.table,c=this.columns,d=b.startRow||0,f=b.endRow||Number.MAX_VALUE,i=b.startColumn||0,j=b.endColumn||Number.MAX_VALUE,e;a&&(typeof a==="string"&&(a=document.getElementById(a)),k(a.getElementsByTagName("tr"),function(a,b){e=0;b>=d&&b<=f&&k(a.childNodes,function(a){if((a.tagName==="TD"||a.tagName==="TH")&&e>=i&&e<=j)c[e]||(c[e]=[]),
