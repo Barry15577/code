@@ -1,6 +1,6 @@
 <template>
   <main class="site-content" :class="{ 'site-content--tabs': $route.meta.isTab }">
-    <!-- 主入口标签页 s -->
+    <!-- Main entry tab s -->
     <el-tabs
       v-if="$route.meta.isTab"
       v-model="mainTabsActiveName"
@@ -10,10 +10,10 @@
       <el-dropdown class="site-tabs__tools" :show-timeout="0">
         <i class="el-icon-arrow-down el-icon--right"></i>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item @click.native="tabsCloseCurrentHandle">关闭当前标签页</el-dropdown-item>
-          <el-dropdown-item @click.native="tabsCloseOtherHandle">关闭其它标签页</el-dropdown-item>
-          <el-dropdown-item @click.native="tabsCloseAllHandle">关闭全部标签页</el-dropdown-item>
-          <el-dropdown-item @click.native="refresh()">刷新当前标签页</el-dropdown-item>
+          <el-dropdown-item @click.native="tabsCloseCurrentHandle">Close the current tab</el-dropdown-item>
+<el-dropdown-item @click.native="tabsCloseOtherHandle">Close other tabs</el-dropdown-item>
+<el-dropdown-item @click.native="tabsCloseAllHandle">Close all tabs</el-dropdown-item>
+<el-dropdown-item @click.native="refresh()">Refresh the current tab</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <el-tab-pane
@@ -33,7 +33,7 @@
         </el-card>
       </el-tab-pane>
     </el-tabs>
-    <!-- 主入口标签页 e -->
+   <!-- Main entry tab e -->
     <el-card v-else :body-style="siteContentViewHeight">
       <keep-alive>
         <router-view />
@@ -76,7 +76,7 @@
       }
     },
     methods: {
-      // tabs, 选中tab
+     // tabs, select the tab
       selectedTabHandle (tab) {
         tab = this.mainTabs.filter(item => item.name === tab.name)
         if (tab.length >= 1) {
@@ -87,7 +87,7 @@
       removeTabHandle (tabName) {
         this.mainTabs = this.mainTabs.filter(item => item.name !== tabName)
         if (this.mainTabs.length >= 1) {
-          // 当前选中tab被Delete
+          // The currently selected tab is deleted
           if (tabName === this.mainTabsActiveName) {
             var tab = this.mainTabs[this.mainTabs.length - 1]
             this.$router.push({ name: tab.name, query: tab.query, params: tab.params }, () => {
@@ -99,21 +99,21 @@
           this.$router.push({ name: 'home' })
         }
       },
-      // tabs, 关闭当前
-      tabsCloseCurrentHandle () {
-        this.removeTabHandle(this.mainTabsActiveName)
-      },
-      // tabs, 关闭其它
-      tabsCloseOtherHandle () {
-        this.mainTabs = this.mainTabs.filter(item => item.name === this.mainTabsActiveName)
-      },
-      // tabs, 关闭全部
-      tabsCloseAllHandle () {
-        this.mainTabs = []
-        this.menuActiveName = ''
-        this.$router.push({ name: 'home' })
-      },
-      // tabs, 刷新当前
+      // tabs, close current
+tabsCloseCurrentHandle () {
+this.removeTabHandle(this.mainTabsActiveName)
+},
+// tabs, close others
+tabsCloseOtherHandle () {
+this.mainTabs = this.mainTabs.filter(item => item.name === this.mainTabsActiveName)
+},
+// tabs, close all
+tabsCloseAllHandle () {
+this.mainTabs = []
+this.menuActiveName = ''
+this.$router.push({ name: 'home' })
+},
+// tabs, refresh current
       tabsRefreshCurrentHandle () {
         var tab = this.$route
         this.removeTabHandle(tab.name)
