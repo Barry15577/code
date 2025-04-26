@@ -14,18 +14,17 @@ const http = axios.create({
 })
 
 /**
- * 请求拦截
- */
+* Request interception
+*/
 http.interceptors.request.use(config => {
-  config.headers['token'] = Vue.cookie.get('token') // 请求头带上token
+  config.headers['token'] = Vue.cookie.get('token')
   return config
 }, error => {
   return Promise.reject(error)
 })
-
 /**
- * 响应拦截
- */
+* Response interception
+*/
 http.interceptors.response.use(response => {
   if (response.data && response.data.code === 401) { // 401, token失效
     clearLoginInfo()
@@ -37,34 +36,33 @@ http.interceptors.response.use(response => {
 })
 
 /**
- * 请求地址处理
- * @param {*} actionName action方法名称
- */
+* Request address processing
+* @param {*} actionName action method name
+*/
 http.adornUrl = (actionName) => {
-  // 非生产环境 && 开启代理, 接口前缀统一使用[/api/]前缀做代理拦截!
-  return (process.env.NODE_ENV !== 'production' && process.env.OPEN_PROXY ? '/api' : window.SITE_CONFIG.baseUrl) + actionName
+// Non-production environment && Open proxy, the interface prefix uniformly uses the [/api/] prefix for proxy interception!
+return (process.env.NODE_ENV !== 'production' && process.env.OPEN_PROXY ? '/api' : window.SITE_CONFIG.baseUrl) + actionName
 }
 
 /**
- * get请求参数处理
- * @param {*} params 参数对象
- * @param {*} openDefultParams 是否开启默认参数?
- */
+* Get request parameter processing
+* @param {*} params parameter object
+* @param {*} openDefultParams whether to enable default parameters?
+*/
 http.adornParams = (params = {}, openDefultParams = true) => {
-  var defaults = {
-    't': new Date().getTime()
-  }
-  return openDefultParams ? merge(defaults, params) : params
+var defaults = {
+'t': new Date().getTime()
 }
-
+return openDefultParams ? merge(defaults, params) : params
+}
 /**
- * post请求数据处理
- * @param {*} data 数据对象
- * @param {*} openDefultdata 是否开启默认数据?
- * @param {*} contentType 数据格式
- *  json: 'application/json; charset=utf-8'
- *  form: 'application/x-www-form-urlencoded; charset=utf-8'
- */
+* post request data processing
+* @param {*} data data object
+* @param {*} openDefultdata whether to open the default data?
+* @param {*} contentType data format
+* json: 'application/json; charset=utf-8'
+* form: 'application/x-www-form-urlencoded; charset=utf-8'
+*/
 http.adornData = (data = {}, openDefultdata = true, contentType = 'json') => {
   var defaults = {
     't': new Date().getTime()
