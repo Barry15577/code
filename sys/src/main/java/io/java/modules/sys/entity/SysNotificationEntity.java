@@ -11,7 +11,7 @@ import java.util.Date;
  * System Notification Entity
  * Represents a system-wide notification that can be viewed by users
  *
- * @author CRM Team
+ * @author Jiasi Lu
  */
 @Data
 @TableName("sys_notification")
