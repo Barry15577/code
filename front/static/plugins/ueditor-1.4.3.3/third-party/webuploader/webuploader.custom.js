@@ -1,45 +1,40 @@
-/*! WebUploader 0.1.2 */
-
-
 /**
- * @fileOverview 让内部各个部件的代码可以用[amd](https://github.com/amdjs/amdjs-api/wiki/AMD)模块定义方式组织起来。
- *
- * AMD API 内部的简单不完全实现，请忽略。只有当WebUploader被合并成一个文件的时候才会引入。
- */
+* Simple incomplete implementation inside AMD API, please ignore. It will only be introduced when WebUploader is merged into one file.
+*/
 (function( root, factory ) {
-    var modules = {},
+var modules = {},
 
-        // 内部require, 简单不完全实现。
-        // https://github.com/amdjs/amdjs-api/wiki/require
-        _require = function( deps, callback ) {
-            var args, len, i;
+// Internal require, simple and incomplete implementation.
+// https://github.com/amdjs/amdjs-api/wiki/require
+_require = function( deps, callback ) {
+var args, len, i;
 
-            // 如果deps不是数组，则直接返回指定module
-            if ( typeof deps === 'string' ) {
-                return getModule( deps );
-            } else {
-                args = [];
-                for( len = deps.length, i = 0; i < len; i++ ) {
-                    args.push( getModule( deps[ i ] ) );
-                }
+// If deps is not an array, return the specified module directly
+if ( typeof deps === 'string' ) {
+return getModule( deps );
+} else {
+args = [];
+for( len = deps.length, i = 0; i < len; i++ ) {
+args.push( getModule( deps[ i ] ) );
+}
 
-                return callback.apply( null, args );
-            }
-        },
+return callback.apply( null, args );
+}
+},
 
-        // 内部define，暂时不支持不指定id.
-        _define = function( id, deps, factory ) {
-            if ( arguments.length === 2 ) {
-                factory = deps;
-                deps = null;
-            }
+// Internal define, temporarily does not support not specifying id.
+_define = function( id, deps, factory ) {
+if ( arguments.length === 2 ) {
+factory = deps;
+deps = null;
+}
 
-            _require( deps || [], function() {
-                setModule( id, factory, arguments );
-            });
-        },
+_require( deps || [], function() {
+setModule( id, factory, arguments );
+});
+},
 
-        // 设置module, 兼容CommonJs写法。
+// Set module, compatible with CommonJs writing.
         setModule = function( id, factory, args ) {
             var module = {
                     exports: factory
@@ -55,18 +50,18 @@
             modules[ id ] = module.exports;
         },
 
-        // 根据id获取module
-        getModule = function( id ) {
-            var module = modules[ id ] || root[ id ];
+        // Get module by id
+getModule = function( id ) {
+var module = modules[ id ] || root[ id ];
 
-            if ( !module ) {
-                throw new Error( '`' + id + '` is undefined' );
-            }
+if ( !module ) {
+throw new Error( '`' + id + '` is undefined' );
+}
 
-            return module;
-        },
+return module;
+},
 
-        // 将所有modules，将路径ids装换成对象。
+// Convert all modules and path ids to objects.
         exportsTo = function( obj ) {
             var key, host, parts, part, last, ucFirst;
 
@@ -161,15 +156,7 @@
     ], function( _ ) {
         return _;
     });
-    /**
-     * @fileOverview 基础类方法。
-     */
-    
-    /**
-     * Web Uploader内部类的详细说明，以下提及的功能类，都可以在`WebUploader`这个变量中访问到。
-     *
-     * As you know, Web Uploader的每个文件都是用过[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)规范中的`define`组织起来的, 每个Module都会有个module id.
-     * 默认module id该文件的路径，而此路径将会转化成名字空间存放在WebUploader中。如：
+    /*
      *
      * * module `base`：WebUploader.Base
      * * module `file`: WebUploader.File
@@ -177,9 +164,9 @@
      * * module `runtime/html5/dnd`: WebUploader.Runtime.Html5.Dnd
      *
      *
-     * 以下文档将可能省略`WebUploader`前缀。
-     * @module WebUploader
-     * @title WebUploader API文档
+    * The following documentation may omit the `WebUploader` prefix.
+* @module WebUploader
+* @title WebUploader API Documentation
      */
     define('base',[
         'dollar',
@@ -217,38 +204,38 @@
     
     
         /**
-         * 基础类，提供一些简单常用的方法。
-         * @class Base
-         */
-        return {
-    
-            /**
-             * @property {String} version 当前版本号。
-             */
-            version: '0.1.2',
-    
-            /**
-             * @property {jQuery|Zepto} $ 引用依赖的jQuery或者Zepto对象。
-             */
-            $: $,
-    
-            Deferred: promise.Deferred,
-    
-            isPromise: promise.isPromise,
-    
-            when: promise.when,
-    
-            /**
-             * @description  简单的浏览器检查结果。
-             *
-             * * `webkit`  webkit版本号，如果浏览器为非webkit内核，此属性为`undefined`。
-             * * `chrome`  chrome浏览器版本号，如果浏览器为chrome，此属性为`undefined`。
-             * * `ie`  ie浏览器版本号，如果浏览器为非ie，此属性为`undefined`。**暂不支持ie10+**
-             * * `firefox`  firefox浏览器版本号，如果浏览器为非firefox，此属性为`undefined`。
-             * * `safari`  safari浏览器版本号，如果浏览器为非safari，此属性为`undefined`。
-             * * `opera`  opera浏览器版本号，如果浏览器为非opera，此属性为`undefined`。
-             *
-             * @property {Object} [browser]
+        * Basic class, providing some simple and commonly used methods.
+* @class Base
+*/
+return {
+
+/**
+* @property {String} version Current version number.
+*/
+version: '0.1.2',
+
+/**
+* @property {jQuery|Zepto} $ Reference dependent jQuery or Zepto object.
+*/
+$: $,
+
+Deferred: promise.Deferred,
+
+isPromise: promise.isPromise,
+
+when: promise.when,
+
+/**
+* @description Simple browser check result.
+*
+* * `webkit` Webkit version number, if the browser is not webkit kernel, this property is `undefined`.
+* * `chrome` Chrome browser version number, if the browser is chrome, this property is `undefined`.
+* * `ie` IE browser version number, if the browser is not ie, this property is `undefined`. **IE10+ is not supported yet**
+* * `firefox` The version number of the firefox browser. If the browser is not firefox, this property is `undefined`.
+* * `safari` The version number of the safari browser. If the browser is not safari, this property is `undefined`.
+* * `opera` The version number of the opera browser. If the browser is not opera, this property is `undefined`.
+*
+* @property {Object} [browser]
              */
             browser: (function( ua ) {
                 var ret = {},
@@ -273,39 +260,39 @@
             })( navigator.userAgent ),
     
             /**
-             * @description  操作系统检查结果。
-             *
-             * * `android`  如果在android浏览器环境下，此值为对应的android版本号，否则为`undefined`。
-             * * `ios` 如果在ios浏览器环境下，此值为对应的ios版本号，否则为`undefined`。
-             * @property {Object} [os]
-             */
-            os: (function( ua ) {
-                var ret = {},
-    
-                    // osx = !!ua.match( /\(Macintosh\; Intel / ),
-                    android = ua.match( /(?:Android);?[\s\/]+([\d.]+)?/ ),
-                    ios = ua.match( /(?:iPad|iPod|iPhone).*OS\s([\d_]+)/ );
-    
-                // osx && (ret.osx = true);
-                android && (ret.android = parseFloat( android[ 1 ] ));
-                ios && (ret.ios = parseFloat( ios[ 1 ].replace( /_/g, '.' ) ));
-    
-                return ret;
-            })( navigator.userAgent ),
-    
-            /**
-             * 实现类与类之间的继承。
-             * @method inherits
-             * @grammar Base.inherits( super ) => child
-             * @grammar Base.inherits( super, protos ) => child
-             * @grammar Base.inherits( super, protos, statics ) => child
-             * @param  {Class} super 父类
-             * @param  {Object | Function} [protos] 子类或者对象。如果对象中包含constructor，子类将是用此属性值。
-             * @param  {Function} [protos.constructor] 子类构造器，不指定的话将创建个临时的直接执行父类构造器的方法。
-             * @param  {Object} [statics] 静态属性或方法。
-             * @return {Class} 返回子类。
-             * @example
-             * function Person() {
+            * @description Operating system check result.
+*
+* * `android` If in the Android browser environment, this value is the corresponding Android version number, otherwise it is `undefined`.
+* * `ios` If in the iOS browser environment, this value is the corresponding iOS version number, otherwise it is `undefined`.
+* @property {Object} [os] 
+*/ 
+os: (function(ua) { 
+var ret = {}, 
+
+// osx = !!ua.match( /\(Macintosh\; Intel / ), 
+android = ua.match( /(?:Android);?[\s\/]+([\d.]+)?/ ), 
+ios = ua.match( /(?:iPad|iPod|iPhone).*OS\s([\d_]+)/ ); 
+
+// osx && (ret.osx = true); 
+android && (ret.android = parseFloat( android[ 1 ] )); 
+ios && (ret.ios = parseFloat( ios[ 1 ].replace( /_/g, '.' ) )); 
+
+return ret; 
+})( navigator.userAgent ), 
+
+/** 
+* Implement inheritance between classes.
+* @method inherits
+* @grammar Base.inherits( super ) => child
+* @grammar Base.inherits( super, protos ) => child
+* @grammar Base.inherits( super, protos, statics ) => child
+* @param {Class} super parent class
+* @param {Object | Function} [protos] child class or object. If the object contains a constructor, the child class will use this property value.
+* @param {Function} [protos.constructor] child class constructor. If not specified, a temporary method that directly executes the parent class constructor will be created.
+* @param {Object} [statics] static properties or methods.
+* @return {Class} returns the child class.
+* @example
+* function Person() {
              *     console.log( 'Super' );
              * }
              * Person.prototype.hello = function() {
@@ -318,54 +305,54 @@
              *     }
              * });
              *
-             * // 因为没有指定构造器，父类的构造器将会执行。
-             * var instance = new Manager();    // => Super
-             *
-             * // 继承子父类的方法
-             * instance.hello();    // => hello
-             * instance.world();    // => World
-             *
-             * // 子类的__super__属性指向父类
-             * console.log( Manager.__super__ === Person );    // => true
-             */
-            inherits: function( Super, protos, staticProtos ) {
-                var child;
-    
-                if ( typeof protos === 'function' ) {
-                    child = protos;
-                    protos = null;
-                } else if ( protos && protos.hasOwnProperty('constructor') ) {
-                    child = protos.constructor;
-                } else {
-                    child = function() {
-                        return Super.apply( this, arguments );
-                    };
-                }
-    
-                // 复制静态方法
-                $.extend( true, child, Super, staticProtos || {} );
-    
-                /* jshint camelcase: false */
-    
-                // 让子类的__super__属性指向父类。
-                child.__super__ = Super.prototype;
-    
-                // 构建原型，添加原型方法或属性。
-                // 暂时用Object.create实现。
-                child.prototype = createObject( Super.prototype );
-                protos && $.extend( true, child.prototype, protos );
-    
-                return child;
-            },
-    
-            /**
-             * 一个不做任何事情的方法。可以用来赋值给默认的callback.
-             * @method noop
-             */
-            noop: noop,
-    
-            /**
-             * 返回一个新的方法，此方法将已指定的`context`来执行。
+* // Because no constructor is specified, the parent class's constructor will be executed.
+* var instance = new Manager(); // => Super
+*
+* // Inherit the method of the child parent class
+* instance.hello(); // => hello
+* instance.world(); // => World
+*
+* // The __super__ attribute of the child class points to the parent class
+* console.log( Manager.__super__ === Person ); // => true
+*/
+inherits: function( Super, protos, staticProtos ) {
+var child;
+
+if ( typeof protos === 'function' ) {
+child = protos;
+protos = null;
+} else if ( protos && protos.hasOwnProperty('constructor') ) {
+child = protos.constructor;
+} else {
+child = function() {
+return Super.apply( this, arguments );
+};
+}
+
+// Copy static method
+$.extend( true, child, Super, staticProtos || {} );
+
+/* jshint camelcase: false */
+
+// Make the __super__ property of the child class point to the parent class.
+child.__super__ = Super.prototype;
+
+// Build a prototype and add prototype methods or properties.
+// Temporarily implement it with Object.create.
+child.prototype = createObject( Super.prototype );
+protos && $.extend( true, child.prototype, protos );
+
+return child;
+},
+
+/**
+* A method that does nothing. Can be used to assign to the default callback.
+* @method noop
+*/
+noop: noop,
+
+/**
+* Return a new method that will be executed with the specified `context`.
              * @grammar Base.bindFn( fn, context ) => Function
              * @method bindFn
              * @example
@@ -383,56 +370,56 @@
             bindFn: bindFn,
     
             /**
-             * 引用Console.log如果存在的话，否则引用一个[空函数loop](#WebUploader:Base.log)。
-             * @grammar Base.log( args... ) => undefined
-             * @method log
-             */
-            log: (function() {
-                if ( window.console ) {
-                    return bindFn( console.log, console );
-                }
-                return noop;
-            })(),
-    
-            nextTick: (function() {
-    
-                return function( cb ) {
-                    setTimeout( cb, 1 );
-                };
-    
-                // @bug 当浏览器不在当前窗口时就停了。
-                // var next = window.requestAnimationFrame ||
-                //     window.webkitRequestAnimationFrame ||
-                //     window.mozRequestAnimationFrame ||
-                //     function( cb ) {
-                //         window.setTimeout( cb, 1000 / 60 );
-                //     };
-    
-                // // fix: Uncaught TypeError: Illegal invocation
-                // return bindFn( next, window );
-            })(),
-    
-            /**
-             * 被[uncurrythis](http://www.2ality.com/2011/11/uncurrying-this.html)的数组slice方法。
-             * 将用来将非数组对象转化成数组对象。
-             * @grammar Base.slice( target, start[, end] ) => Array
-             * @method slice
-             * @example
-             * function doSomthing() {
-             *     var args = Base.slice( arguments, 1 );
-             *     console.log( args );
-             * }
-             *
-             * doSomthing( 'ignored', 'arg2', 'arg3' );    // => Array ["arg2", "arg3"]
-             */
-            slice: uncurryThis( [].slice ),
-    
-            /**
-             * 生成唯一的ID
-             * @method guid
-             * @grammar Base.guid() => String
-             * @grammar Base.guid( prefx ) => String
-             */
+             * Reference Console.log if it exists, otherwise reference an [empty function loop](#WebUploader:Base.log).
+* @grammar Base.log( args... ) => undefined
+* @method log
+*/
+log: (function() {
+if ( window.console ) {
+return bindFn( console.log, console );
+}
+return noop;
+})(),
+
+nextTick: (function() {
+
+return function( cb ) {
+setTimeout( cb, 1 );
+};
+
+// @bug When the browser is not in the current window, it stops.
+// var next = window.requestAnimationFrame ||
+// window.webkitRequestAnimationFrame ||
+// window.mozRequestAnimationFrame ||
+// function( cb ) {
+// window.setTimeout( cb, 1000 / 60 );
+// };
+
+// // fix: Uncaught TypeError: Illegal invocation
+// return bindFn( next, window );
+})(),
+
+/**
+* The array slice method that was uncurrythis.
+* Will be used to convert non-array objects into array objects.
+* @grammar Base.slice( target, start[, end] ) => Array 
+* @method slice 
+* @example 
+* function doSomthing() { 
+* var args = Base.slice( arguments, 1 ); 
+* console.log( args ); 
+* } 
+* 
+* doSomthing( 'ignored', 'arg2', 'arg3' ); // => Array ["arg2", "arg3"] 
+*/ 
+slice: uncurryThis( [].slice ), 
+
+/** 
+* Generate unique ID 
+* @method guid 
+* @grammar Base.guid() => String 
+* @grammar Base.guid( prefx ) => String 
+*/
             guid: (function() {
                 var counter = 0;
     
@@ -448,15 +435,15 @@
                 };
             })(),
     
-            /**
-             * 格式化文件大小, 输出成带单位的字符串
-             * @method formatSize
-             * @grammar Base.formatSize( size ) => String
-             * @grammar Base.formatSize( size, pointLength ) => String
-             * @grammar Base.formatSize( size, pointLength, units ) => String
-             * @param {Number} size 文件大小
-             * @param {Number} [pointLength=2] 精确到的小数点数。
-             * @param {Array} [units=[ 'B', 'K', 'M', 'G', 'TB' ]] 单位数组。从字节，到千字节，一直往上指定。如果单位数组里面只指定了到了K(千字节)，同时文件大小大于M, 此方法的输出将还是显示成多少K.
+          /**
+* Format file size, output as a string with units
+* @method formatSize
+* @grammar Base.formatSize( size ) => String
+* @grammar Base.formatSize( size, pointLength ) => String
+* @grammar Base.formatSize( size, pointLength, units ) => String
+* @param {Number} size File size
+* @param {Number} [pointLength=2] Accurate decimal points.
+* @param {Array} [units=[ 'B', 'K', 'M', 'G', 'TB' ]] Unit array. From bytes to kilobytes, and so on. If only K (kilobytes) are specified in the unit array, and the file size is greater than M, the output of this method will still be displayed as K.
              * @example
              * console.log( Base.formatSize( 100 ) );    // => 100B
              * console.log( Base.formatSize( 1024 ) );    // => 1.00K
@@ -480,30 +467,30 @@
         };
     });
     /**
-     * 事件处理类，可以独立使用，也可以扩展给对象使用。
-     * @fileOverview Mediator
-     */
-    define('mediator',[
-        'base'
-    ], function( Base ) {
-        var $ = Base.$,
-            slice = [].slice,
-            separator = /\s+/,
-            protos;
-    
-        // 根据条件过滤出事件handlers.
-        function findHandlers( arr, name, callback, context ) {
-            return $.grep( arr, function( handler ) {
-                return handler &&
-                        (!name || handler.e === name) &&
-                        (!callback || handler.cb === callback ||
-                        handler.cb._cb === callback) &&
-                        (!context || handler.ctx === context);
-            });
-        }
-    
-        function eachEvent( events, callback, iterator ) {
-            // 不支持对象，只支持多个event用空格隔开
+    * Event handling class, can be used independently or extended to objects.
+* @fileOverview Mediator
+*/
+define('mediator',[
+'base'
+], function( Base ) {
+var $ = Base.$,
+slice = [].slice,
+separator = /\s+/,
+protos;
+
+// Filter out event handlers according to conditions.
+function findHandlers( arr, name, callback, context ) {
+return $.grep( arr, function( handler ) {
+return handler &&
+(!name || handler.e === name) &&
+(!callback || handler.cb === callback ||
+handler.cb._cb === callback) &&
+(!context || handler.ctx === context);
+});
+}
+
+function eachEvent( events, callback, iterator ) {
+// Objects are not supported, only multiple events are separated by spaces
             $.each( (events || '').split( separator ), function( _, key ) {
                 iterator( key, callback );
             });
@@ -529,42 +516,42 @@
     
         protos = {
     
-            /**
-             * 绑定事件。
-             *
-             * `callback`方法在执行时，arguments将会来源于trigger的时候携带的参数。如
-             * ```javascript
-             * var obj = {};
-             *
-             * // 使得obj有事件行为
-             * Mediator.installTo( obj );
-             *
-             * obj.on( 'testa', function( arg1, arg2 ) {
-             *     console.log( arg1, arg2 ); // => 'arg1', 'arg2'
-             * });
-             *
-             * obj.trigger( 'testa', 'arg1', 'arg2' );
-             * ```
-             *
-             * 如果`callback`中，某一个方法`return false`了，则后续的其他`callback`都不会被执行到。
-             * 切会影响到`trigger`方法的返回值，为`false`。
-             *
-             * `on`还可以用来添加一个特殊事件`all`, 这样所有的事件触发都会响应到。同时此类`callback`中的arguments有一个不同处，
-             * 就是第一个参数为`type`，记录当前是什么事件在触发。此类`callback`的优先级比脚低，会再正常`callback`执行完后触发。
-             * ```javascript
-             * obj.on( 'all', function( type, arg1, arg2 ) {
-             *     console.log( type, arg1, arg2 ); // => 'testa', 'arg1', 'arg2'
-             * });
-             * ```
-             *
-             * @method on
-             * @grammar on( name, callback[, context] ) => self
-             * @param  {String}   name     事件名，支持多个事件用空格隔开
-             * @param  {Function} callback 事件处理器
-             * @param  {Object}   [context]  事件处理器的上下文。
-             * @return {self} 返回自身，方便链式
-             * @chainable
-             * @class Mediator
+           /**
+* Bind events.
+*
+* When the `callback` method is executed, arguments will come from the parameters carried by the trigger. For example
+* ```javascript
+* var obj = {};
+*
+* // Make obj have event behavior
+* Mediator.installTo( obj );
+*
+* obj.on( 'testa', function( arg1, arg2 ) {
+* console.log( arg1, arg2 ); // => 'arg1', 'arg2'
+* });
+*
+* obj.trigger( 'testa', 'arg1', 'arg2' );
+* ```
+*
+* If a method in `callback` returns false, the subsequent `callback` will not be executed.
+* It will affect the return value of the `trigger` method, which is `false`.
+*
+* `on` can also be used to add a special event `all`, so that all event triggers will respond. At the same time, there is a difference in the arguments of this type of `callback`,
+* that is, the first parameter is `type`, which records what event is currently triggering. This type of `callback` has a lower priority than the foot and will be triggered after the normal `callback` is executed.
+* ```javascript
+* obj.on( 'all', function( type, arg1, arg2 ) {
+* console.log( type, arg1, arg2 ); // => 'testa', 'arg1', 'arg2'
+* });
+* ```
+*
+* @method on
+* @grammar on( name, callback[, context] ) => self
+* @param {String} name event name, multiple events can be separated by spaces
+* @param {Function} callback event handler
+* @param {Object} [context] event handler context.
+* @return {self} returns itself, convenient for chaining
+* @chainable
+* @class Mediator
              */
             on: function( name, callback, context ) {
                 var me = this,
@@ -591,14 +578,14 @@
             },
     
             /**
-             * 绑定事件，且当handler执行完后，自动解除绑定。
-             * @method once
-             * @grammar once( name, callback[, context] ) => self
-             * @param  {String}   name     事件名
-             * @param  {Function} callback 事件处理器
-             * @param  {Object}   [context]  事件处理器的上下文。
-             * @return {self} 返回自身，方便链式
-             * @chainable
+            * Bind the event, and automatically unbind it when the handler is executed.
+* @method once
+* @grammar once( name, callback[, context] ) => self
+* @param {String} name event name
+* @param {Function} callback event handler
+* @param {Object} [context] context of the event handler.
+* @return {self} returns itself, convenient for chaining
+* @chainable
              */
             once: function( name, callback, context ) {
                 var me = this;
@@ -621,14 +608,14 @@
             },
     
             /**
-             * 解除事件绑定
-             * @method off
-             * @grammar off( [name[, callback[, context] ] ] ) => self
-             * @param  {String}   [name]     事件名
-             * @param  {Function} [callback] 事件处理器
-             * @param  {Object}   [context]  事件处理器的上下文。
-             * @return {self} 返回自身，方便链式
-             * @chainable
+           * Unbind event
+* @method off
+* @grammar off( [name[, callback[, context] ] ] ) => self
+* @param {String} [name] Event name
+* @param {Function} [callback] Event handler
+* @param {Object} [context] Context of event handler.
+* @return {self} Returns itself, convenient for chaining
+* @chainable
              */
             off: function( name, cb, ctx ) {
                 var events = this._events;
