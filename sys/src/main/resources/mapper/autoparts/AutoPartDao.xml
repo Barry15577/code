@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.java.modules.autoparts.dao.AutoPartDao">
+
+    <sql id="selectFields">
+        part_id, part_number, part_name, category, subcategory, manufacturer, 
+        compatible_makes, compatible_models, year_range, stock_quantity, 
+        low_stock_threshold, purchase_price, selling_price, supplier_id, 
+        supplier_name, location, dimensions, weight, weight_unit, 
+        `condition`, oem_number, description, image_url, status, 
+        restock_date, create_time, update_time
+    </sql>
+    
+    <!-- Query Category List -->
+    <select id="getCategories" resultType="java.lang.String">
+        SELECT DISTINCT category FROM crm_auto_part WHERE category IS NOT NULL
+    </select>
+    
+    <!-- Query sub-category list by category -->
+    <select id="getSubcategories" resultType="java.lang.String">
+        SELECT DISTINCT subcategory FROM crm_auto_part 
+        WHERE category = #{category} AND subcategory IS NOT NULL
+    </select>
+    
+    <!-- Check Manufacturer List -->
+    <select id="getManufacturers" resultType="java.lang.String">
+        SELECT DISTINCT manufacturer FROM crm_auto_part WHERE manufacturer IS NOT NULL
+    </select>
+    
+    <!-- Query products with inventory below the threshold -->
+    <select id="getLowStockParts" resultType="io.java.modules.autoparts.entity.AutoPartEntity">
+        SELECT 
+            <include refid="selectFields" /> 
+        FROM crm_auto_part
+        WHERE stock_quantity &lt;= low_stock_threshold
+        ORDER BY (stock_quantity / low_stock_threshold) ASC, part_id ASC
+    </select>
+    
+    <!-- Check if a part exists by part number -->
+    <select id="checkPartNumberExists" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM crm_auto_part 
+        WHERE part_number = #{partNumber}
+        <if test="excludeId != null">
+            AND part_id != #{excludeId}
+        </if>
+    </select>
+    
+    <!-- Search Parts -->
+    <select id="searchParts" resultType="io.java.modules.autoparts.entity.AutoPartEntity">
+        SELECT 
+            <include refid="selectFields" /> 
+        FROM crm_auto_part
+        WHERE part_number LIKE CONCAT('%', #{query}, '%')
+           OR part_name LIKE CONCAT('%', #{query}, '%')
+        LIMIT 20
+    </select>
+</mapper> 
