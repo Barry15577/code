@@ -1,26 +1,26 @@
 /*
- * 图片转换对话框脚本
- **/
+* Image conversion dialog script
+**/
 
 var tableData = [],
-    //编辑器页面table
-    editorTable = null,
-    chartsConfig = window.typeConfig,
-    resizeTimer = null,
-    //初始默认图表类型
-    currentChartType = 0;
+//Editor page table
+editorTable = null,
+chartsConfig = window.typeConfig,
+resizeTimer = null,
+//Initial default chart type
+currentChartType = 0;
 
 window.onload = function () {
 
-    editorTable = domUtils.findParentByTagName( editor.selection.getRange().startContainer, 'table', true);
+editorTable = domUtils.findParentByTagName( editor.selection.getRange().startContainer, 'table', true);
 
-    //未找到表格， 显示错误页面
-    if ( !editorTable ) {
-        document.body.innerHTML = "<div class='edui-charts-not-data'>未找到数据</div>";
-        return;
-    }
+//Table not found, display error page
+if ( !editorTable ) {
+document.body.innerHTML = "<div class='edui-charts-not-data'>Data not found</div>";
+return;
+}
 
-    //初始化图表类型选择
+//Initialize chart type selection
     initChartsTypeView();
     renderTable( editorTable );
     initEvent();
@@ -60,12 +60,12 @@ function initChartsTypeView () {
 
 }
 
-//渲染table， 以便用户Edit数据
+// Render the table so that users can edit data
 function renderTable ( table ) {
 
-    var tableHtml = [];
+var tableHtml = [];
 
-    //构造数据
+// Construct data
     for ( var i = 0, row; row = table.rows[ i ]; i++ ) {
 
         tableData[ i ] = [];
@@ -93,14 +93,14 @@ function renderTable ( table ) {
 
     }
 
-    //draw 表格
-    $( "#tableContainer" ).html( '<table id="showTable" border="1"><tbody><tr>'+ tableHtml.join( "</tr><tr>" ) +'</tr></tbody></table>' );
+    //draw table
+$( "#tableContainer" ).html( '<table id="showTable" border="1"><tbody><tr>'+ tableHtml.join( "</tr><tr>" ) +'</tr></tbody></table>' );
 
 }
 
 /*
- * 根据表格已有的图表属性初始化当前图表属性
- */
+* Initialize the current chart properties according to the existing chart properties of the table
+*/
 function initUserConfig ( config ) {
 
     var parsedConfig = {};
@@ -125,7 +125,7 @@ function initUserConfig ( config ) {
 function initEvent () {
 
     var cacheValue = null,
-        //图表类型数
+       //Number of chart types
         typeViewCount = chartsConfig.length- 1,
         $chartsTypeViewBox = $( '#scrollBed .view-box' );
 
@@ -171,21 +171,21 @@ function initEvent () {
 
     } );
 
-    //图表类型变化
-    $( '#scrollBed' ).delegate( ".view-box", "click", function (e) {
+    //Chart type changes
+$( '#scrollBed' ).delegate( ".view-box", "click", function (e) {
 
-        var index = $( this ).attr( "data-chart-type" );
-        $chartsTypeViewBox.removeClass( "selected" );
-        $( $chartsTypeViewBox[ index ] ).addClass( "selected" );
+var index = $( this ).attr( "data-chart-type" );
+$chartsTypeViewBox.removeClass( "selected" );
+$( $chartsTypeViewBox[ index ] ).addClass( "selected" );
 
-        currentChartType = index | 0;
+currentChartType = index | 0;
 
-        //饼图， 禁用部分配置
-        if ( currentChartType === chartsConfig.length - 1 ) {
+//Pie chart, disable partial configuration
+if ( currentChartType === chartsConfig.length - 1 ) {
 
-            disableNotPieConfig();
+disableNotPieConfig();
 
-        //启用完整配置
+//Enable full configuration
         } else {
 
             enableNotPieConfig();
@@ -266,20 +266,20 @@ function collectData () {
         data = getSeriesAndCategories();
         $.extend( data, getUserConfig() );
 
-    //饼图数据格式
-    } else {
-        data = getSeriesForPieChart();
-        data.title = form[ 'title' ].value;
-        data.suffix = form[ 'unit' ].value;
-    }
+    //Pie chart data format
+} else {
+data = getSeriesForPieChart();
+data.title = form[ 'title' ].value;
+data.suffix = form[ 'unit' ].value;
+}
 
-    return data;
+return data;
 
 }
 
 /**
- * 获取用户配置信息
- */
+* Get user configuration information
+*/
 function getUserConfig () {
 
     var form = document.forms[ 'data-form' ],
@@ -289,9 +289,9 @@ function getUserConfig () {
             xTitle: form[ 'x-title' ].value,
             yTitle: form[ 'y-title' ].value,
             suffix: form[ 'unit' ].value,
-            //数据对齐方式
-            tableDataFormat: getTableDataFormat (),
-            //饼图提示文字
+           //Data alignment
+tableDataFormat: getTableDataFormat (),
+//Pie chart prompt text
             tip: $( "#tipInput" ).val()
         };
 
@@ -322,7 +322,7 @@ function getSeriesAndCategories () {
         tmp = [],
         tableData = getTableData();
 
-    //反转数据
+    //Reverse data
     if ( getTableDataFormat() === "-1" ) {
 
         for ( var i = 0, len = tableData.length; i < len; i++ ) {
@@ -362,20 +362,20 @@ function getSeriesAndCategories () {
 }
 
 /*
- * 获取数据源数据对齐方式
- */
+* Get the data source data alignment
+*/
 function getTableDataFormat () {
 
-    var form = document.forms[ 'data-form' ],
-        items = form['charts-format'];
+var form = document.forms[ 'data-form' ],
+items = form['charts-format'];
 
-    return items[ 0 ].checked ? items[ 0 ].value : items[ 1 ].value;
+return items[ 0 ].checked ? items[ 0 ].value : items[ 1 ].value;
 
 }
 
 /*
- * 禁用非饼图类型的配置项
- */
+* Disable non-pie chart type configuration items
+*/
 function disableNotPieConfig() {
 
     updateConfigItem( 'disable' );
@@ -383,20 +383,20 @@ function disableNotPieConfig() {
 }
 
 /*
- * 启用非饼图类型的配置项
- */
+* Enable non-pie chart type configuration items
+*/
 function enableNotPieConfig() {
 
-    updateConfigItem( 'enable' );
+updateConfigItem( 'enable' );
 
 }
 
 function updateConfigItem ( value ) {
 
-    var table = $( "#showTable" )[ 0 ],
-        isDisable = value === 'disable' ? true : false;
+var table = $( "#showTable" )[ 0 ],
+isDisable = value === 'disable' ? true : false;
 
-    //table中的input处理
+//Input processing in table
     for ( var i = 2 , row; row = table.rows[ i ]; i++ ) {
 
         for ( var j = 1, cell; cell = row.cells[ j ]; j++ ) {
@@ -407,16 +407,16 @@ function updateConfigItem ( value ) {
 
     }
 
-    //其他项处理
-    $( "input.not-pie-item" ).attr( "disabled", isDisable );
-    $( "#tipInput" ).attr( "disabled", !isDisable )
+    //Other item processing
+$( "input.not-pie-item" ).attr( "disabled", isDisable );
+$( "#tipInput" ).attr( "disabled", !isDisable )
 
 }
 
 /*
- * 获取饼图数据
- * 饼图的数据只取第一行的
- **/
+* Get pie chart data
+* Only the first row of pie chart data is taken
+**/
 function getSeriesForPieChart () {
 
     var series = {
@@ -481,27 +481,27 @@ function getCellValue ( cell ) {
 }
 
 
-//dialog确认事件
+//dialog confirmation event
 dialog.onok = function () {
 
-    //收集信息
-    var form = document.forms[ 'data-form' ],
-        info = getUserConfig();
+//Collect information
+var form = document.forms[ 'data-form' ],
+info = getUserConfig();
 
-    //添加图表类型
-    info.chartType = currentChartType;
+//Add chart type
+info.chartType = currentChartType;
 
-    //同步表格数据到编辑器
-    syncTableData();
+//Synchronize table data to editor
+syncTableData();
 
-    //执行图表命令
-    editor.execCommand( 'charts', info );
+//Execute chart command
+editor.execCommand( 'charts', info );
 
 };
 
 /*
- * 同步图表编辑视图的表格数据到编辑器里的原始表格
- */
+* Synchronize the table data of the chart editing view to the original table in the editor
+*/
 function syncTableData () {
 
     var tableData = getTableData();
