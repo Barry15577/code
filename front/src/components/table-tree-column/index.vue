@@ -47,7 +47,7 @@
       hasChild (row) {
         return (isArray(row[this.childKey]) && row[this.childKey].length >= 1) || false
       },
-      // 切换处理
+      
       toggleHandle (index, row) {
         if (this.hasChild(row)) {
           var data = this.$parent.store.states.data.slice(0)
