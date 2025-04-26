@@ -1,20 +1,4 @@
 /**
- * @license Data plugin for Highcharts
- *
- * (c) 2012-2013 Torstein Hønsi
- * Last revision 2013-06-07
- *
- * License: www.highcharts.com/license
- */
-
-/*
- * The Highcharts Data plugin is a utility to ease parsing of input sources like
- * CSV, HTML tables or grid views into basic configuration options for use 
- * directly in the Highcharts constructor.
- *
- * Demo: http://jsfiddle.net/highcharts/SnLFj/
- *
- * --- OPTIONS ---
  *
  * - columns : Array<Array<Mixed>>
  * A two-dimensional array representing the input data on tabular form. This input can
