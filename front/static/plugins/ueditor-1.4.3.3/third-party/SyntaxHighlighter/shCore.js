@@ -1,10 +1,3 @@
-// XRegExp 1.5.1
-// (c) 2007-2012 Steven Levithan
-// MIT License
-// <http://xregexp.com>
-// Provides an augmented, extensible, cross-browser implementation of regular expressions,
-// including support for additional syntax, flags, and methods
-
 var XRegExp;
 
 if (XRegExp) {
@@ -15,14 +8,6 @@ if (XRegExp) {
 // Run within an anonymous function to protect variables and avoid new globals
 (function (undefined) {
 
-    //---------------------------------
-    //  Constructor
-    //---------------------------------
-
-    // Accepts a pattern and flags; returns a new, extended `RegExp` object. Differs from a native
-    // regular expression in that additional syntax and flags are supported and cross-browser
-    // syntax inconsistencies are ameliorated. `XRegExp(/regex/)` clones an existing regex and
-    // converts to type XRegExp
     XRegExp = function (pattern, flags) {
         var output = [],
             currScope = XRegExp.OUTSIDE_CLASS,
@@ -81,21 +66,12 @@ if (XRegExp) {
         return regex;
     };
 
-
-    //---------------------------------
-    //  Public properties
-    //---------------------------------
-
     XRegExp.version = "1.5.1";
 
     // Token scope bitflags
     XRegExp.INSIDE_CLASS = 1;
     XRegExp.OUTSIDE_CLASS = 2;
 
-
-    //---------------------------------
-    //  Private variables
-    //---------------------------------
 
     var replacementToken = /\$(?:(\d\d?|[$&`'])|{([$\w]+)})/g,
         flagClip = /[^gimy]+|([\s\S])(?=[\s\S]*\1)/g, // Nonnative and duplicate flags
@@ -125,14 +101,6 @@ if (XRegExp) {
     nativeTokens[XRegExp.OUTSIDE_CLASS] = /^(?:\\(?:0(?:[0-3][0-7]{0,2}|[4-7][0-7]?)?|[1-9]\d*|x[\dA-Fa-f]{2}|u[\dA-Fa-f]{4}|c[A-Za-z]|[\s\S])|\(\?[:=!]|[?*+]\?|{\d+(?:,\d*)?}\??)/;
 
 
-    //---------------------------------
-    //  Public methods
-    //---------------------------------
-
-    // Lets you extend or change XRegExp syntax and create custom flags. This is used internally by
-    // the XRegExp library and can be used to create XRegExp plugins. This function is intended for
-    // users with advanced knowledge of JavaScript's regular expression syntax and behavior. It can
-    // be disabled by `XRegExp.freezeTokens`
     XRegExp.addToken = function (regex, handler, scope, trigger) {
         tokens.push({
             pattern: clone(regex, "g" + (hasNativeY ? "y" : "")),
@@ -240,10 +208,6 @@ if (XRegExp) {
     };
 
 
-    //---------------------------------
-    //  New RegExp prototype methods
-    //---------------------------------
-
     // Accepts a context object and arguments array; returns the result of calling `exec` with the
     // first value in the arguments array. the context is ignored but is accepted for congruity
     // with `Function.prototype.apply`
@@ -257,10 +221,6 @@ if (XRegExp) {
         return this.exec(str);
     };
 
-
-    //---------------------------------
-    //  Overriden native methods
-    //---------------------------------
 
     // Adds named capture support (with backreferences returned as `result.name`), and fixes two
     // cross-browser issues per ES3:
@@ -331,12 +291,6 @@ if (XRegExp) {
         return regex.exec(this); // Run the altered `exec`
     };
 
-    // Adds support for `${n}` tokens for named and numbered backreferences in replacement text,
-    // and provides named backreferences to replacement functions as `arguments[0].name`. Also
-    // fixes cross-browser differences in replacement text syntax when performing a replacement
-    // using a nonregex search value, and the value of replacement regexes' `lastIndex` property
-    // during replacement iterations. Note that this doesn't support SpiderMonkey's proprietary
-    // third (`flags`) parameter
     String.prototype.replace = function (search, replacement) {
         var isRegex = XRegExp.isRegExp(search),
             captureNames, result, str, origLastIndex;
@@ -441,13 +395,7 @@ if (XRegExp) {
             output = [],
             lastLastIndex = 0,
             match, lastLength;
-
-        // Behavior for `limit`: if it's...
-        // - `undefined`: No limit
-        // - `NaN` or zero: Return an empty array
-        // - A positive number: Use `Math.floor(limit)`
-        // - A negative number: No limit
-        // - Other: Type-convert, then use the above rules
+      
         if (limit === undefined || +limit < 0) {
             limit = Infinity;
         } else {
@@ -489,13 +437,6 @@ if (XRegExp) {
     };
 
 
-    //---------------------------------
-    //  Private helper functions
-    //---------------------------------
-
-    // Supporting function for `XRegExp`, `XRegExp.copyAsGlobal`, etc. Returns a copy of a `RegExp`
-    // instance with a fresh `lastIndex` (set to zero), preserving properties required for named
-    // capture. Also allows adding new flags in the process of copying the regex
     function clone (regex, additionalFlags) {
         if (!XRegExp.isRegExp(regex))
             throw TypeError("type RegExp expected");
@@ -557,10 +498,6 @@ if (XRegExp) {
         return -1;
     }
 
-
-    //---------------------------------
-    //  Built-in tokens
-    //---------------------------------
 
     // Augment XRegExp's regular expression syntax and flags. Note that when adding tokens, the
     // third (`scope`) argument defaults to `XRegExp.OUTSIDE_CLASS`
@@ -645,20 +582,6 @@ if (XRegExp) {
         XRegExp.OUTSIDE_CLASS,
         function () {return this.hasFlag("s");}
     );
-
-
-    //---------------------------------
-    //  Backward compatibility
-    //---------------------------------
-
-    // Uncomment the following block for compatibility with XRegExp 1.0-1.2:
-    /*
-     XRegExp.matchWithinChain = XRegExp.matchChain;
-     RegExp.prototype.addFlags = function (s) {return clone(this, s);};
-     RegExp.prototype.execAll = function (s) {var r = []; XRegExp.iterate(s, this, function (m) {r.push(m);}); return r;};
-     RegExp.prototype.forEachExec = function (s, f, c) {return XRegExp.iterate(s, this, f, c);};
-     RegExp.prototype.validate = function (s) {var r = RegExp("^(?:" + this.source + ")$(?!\\s)", getNativeFlags(this)); if (this.global) this.lastIndex = 0; return s.search(r) === 0;};
-     */
 
 })();
 
@@ -1005,7 +928,7 @@ if (typeof(SyntaxHighlighter) == 'undefined') var SyntaxHighlighter = function()
                 // carry over ID
                 if ((target.id || '') != '')
                     element.id = target.id;
-                //by zhanyi 去掉多余的外围div
+              
                 var tmp = element.firstChild.firstChild;
                 tmp.className = element.firstChild.className;
 
