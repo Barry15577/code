@@ -1,4 +1,4 @@
-/*基础UI构建
+/*Basic UI construction
 */
 /* common layer */
 .edui-default .edui-box {
@@ -113,13 +113,13 @@ div.edui-box {
     color: gray;
     cursor: default;
 }
-/* 工具栏 */
+/* Toolbar */
 .edui-default .edui-toolbar {
-    cursor: default;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    padding: 1px;
-    overflow: hidden; /*全屏下单独一行不占位*/
+cursor: default;
+-webkit-user-select: none;
+-moz-user-select: none;
+padding: 1px;
+overflow: hidden; /* Single line does not occupy space in full screen */
     zoom: 1;
     width:auto;
     height:auto;
@@ -131,7 +131,7 @@ div.edui-box {
 .edui-default .edui-toolbar .edui-combox {
     margin: 1px;
 }
-/*UI工具栏、编辑区域、底部*/
+/*UI toolbar, editing area, bottom*/
 .edui-default .edui-editor {
     border: 1px solid #d4d4d4;
     background-color: white;
