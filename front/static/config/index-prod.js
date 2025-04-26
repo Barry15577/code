@@ -1,14 +1,14 @@
 /**
- * 生产环境
- */
+* Production environment
+*/
 ;(function () {
-  window.SITE_CONFIG = {};
+window.SITE_CONFIG = {};
 
-  // api接口请求地址
-  window.SITE_CONFIG['baseUrl'] = 'http://demo.open.renren.io/renren-fast-server';
+// api interface request address
+window.SITE_CONFIG['baseUrl'] = 'http://demo.open.renren.io/renren-fast-server';
 
-  // cdn地址 = 域名 + 版本号
-  window.SITE_CONFIG['domain']  = './'; // 域名
-  window.SITE_CONFIG['version'] = '';   // 版本号(年月日时分)
-  window.SITE_CONFIG['cdnUrl']  = window.SITE_CONFIG.domain + window.SITE_CONFIG.version;
+// cdn address = domain name + version number
+window.SITE_CONFIG['domain'] = './'; // domain name
+window.SITE_CONFIG['version'] = ''; // version number (year, month, day, hour, minute)
+window.SITE_CONFIG['cdnUrl'] = window.SITE_CONFIG.domain + window.SITE_CONFIG.version;
 })();
