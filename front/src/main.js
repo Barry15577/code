@@ -14,16 +14,16 @@ import cloneDeep from 'lodash/cloneDeep'
 Vue.use(VueCookie)
 Vue.config.productionTip = false
 
-// 非生产环境, 适配mockjs模拟数据                 // api: https://github.com/nuysoft/Mock
+// Non-production environment, adapt to mockjs simulation data
 if (process.env.NODE_ENV !== 'production') {
-  require('@/mock')
+require('@/mock')
 }
 
-// 挂载全局
-Vue.prototype.$http = httpRequest // ajax请求方法
-Vue.prototype.isAuth = isAuth     // 权限方法
+// Mount globally
+Vue.prototype.$http = httpRequest // ajax request method
+Vue.prototype.isAuth = isAuth // Permission method
 
-// 保存整站vuex本地储存初始状态
+// Save the initial state of the entire site vuex local storage
 window.SITE_CONFIG['storeState'] = cloneDeep(store.state)
 
 /* eslint-disable no-new */
