@@ -14,42 +14,41 @@ var scrawl = function (options) {
         drawStep = [], //undo redo存储
         drawStepIndex = 0; //undo redo指针
 
-    scrawl.prototype = {
-        isScrawl:false, //是否涂鸦
-        brushWidth:-1, //画笔粗细
-        brushColor:"", //画笔颜色
+   scrawl.prototype = {
+isScrawl:false, //Whether to graffiti
+brushWidth:-1, //Brush thickness
+brushColor:"", //Brush color
 
-        initOptions:function (options) {
-            var me = this;
-            me.originalState(options);//初始页面状态
-            me._buildToolbarColor(options.colorList);//动态生成颜色选择集合
+initOptions:function (options) {
+var me = this;
+me.originalState(options);//Initial page state
+me._buildToolbarColor(options.colorList);//Dynamically generate color selection set
 
-            me._addBoardListener(options.saveNum);//添加画板处理
-            me._addOPerateListener(options.saveNum);//添加undo redo clearBoard处理
-            me._addColorBarListener();//添加颜色选择处理
-            me._addBrushBarListener();//添加画笔大小处理
-            me._addEraserBarListener();//添加橡皮大小处理
-            me._addAddImgListener();//添加增添背景图片处理
-            me._addRemoveImgListenter();//Delete背景图片处理
-            me._addScalePicListenter();//添加缩放处理
-            me._addClearSelectionListenter();//添加清楚选中状态处理
+me._addBoardListener(options.saveNum);//Add drawing board processing
+me._addOPerateListener(options.saveNum);//Add undo redo clearBoard processing
+me._addColorBarListener();//Add color selection processing
+me._addBrushBarListener();//Add brush size processing
+me._addEraserBarListener();//Add eraser size processing
+me._addAddImgListener();//Add background image processing
+me._addRemoveImgListenter();//Delete background image processing
+me._addScalePicListenter();//Add scaling processing
+me._addClearSelectionListenter();//Add clear selection status processing
+me._originalColorSelect(options.drawBrushColor);//Initialize color selection
+me._originalBrushSelect(options.drawBrushSize);//Initialize brush selection
+me._clearSelection();//Clear selection status
+},
 
-            me._originalColorSelect(options.drawBrushColor);//初始化颜色选中
-            me._originalBrushSelect(options.drawBrushSize);//初始化画笔选中
-            me._clearSelection();//清楚选中状态
-        },
+originalState:function (options) {
+var me = this;
 
-        originalState:function (options) {
-            var me = this;
+me.brushWidth = options.drawBrushSize;//Synchronize brush thickness
+me.brushColor = options.drawBrushColor;//Synchronize brush color
 
-            me.brushWidth = options.drawBrushSize;//同步画笔粗细
-            me.brushColor = options.drawBrushColor;//同步画笔颜色
-
-            context.lineWidth = me.brushWidth;//初始画笔大小
-            context.strokeStyle = me.brushColor;//初始画笔颜色
-            context.fillStyle = "transparent";//初始画布背景颜色
-            context.lineCap = "round";//去除锯齿
-            context.fill();
+context.lineWidth = me.brushWidth;//Initial brush size
+context.strokeStyle = me.brushColor;//Initial brush color
+context.fillStyle = "transparent"; //Initial canvas background color
+context.lineCap = "round"; //Remove jagged edges
+context.fill();
         },
         _buildToolbarColor:function (colorList) {
             var tmp = null, arr = [];
@@ -92,7 +91,7 @@ var scrawl = function (options) {
                         isMouseUp = false;
                         isMouseMove = false;
                         me.isScrawl = true;
-                        startX = e.clientX - margin;//10为外边距总和
+                        startX = e.clientX - margin; //10 is the total margin
                         startY = e.clientY - margin;
                         context.beginPath();
                         break;
@@ -101,7 +100,7 @@ var scrawl = function (options) {
                             return;
                         }
                         if (!flag && button) {
-                            startX = e.clientX - margin;//10为外边距总和
+                         startX = e.clientX - margin; //10 is the total margin
                             startY = e.clientY - margin;
                             context.beginPath();
                             flag = 1;
@@ -566,13 +565,13 @@ var ScaleBoy = function () {
     };
 })();
 
-//后台回调
+//Background callback
 function ue_callback(url, state) {
     var doc = document,
         picBorard = $G("J_picBoard"),
         img = doc.createElement("img");
 
-    //图片缩放
+    // Image zoom
     function scale(img, max, oWidth, oHeight) {
         var width = 0, height = 0, percent, ow = img.width || oWidth, oh = img.height || oHeight;
         if (ow > max || oh > max) {
@@ -592,9 +591,9 @@ function ue_callback(url, state) {
         }
     }
 
-    //移除遮罩层
+    //Remove the mask layer
     removeMaskLayer();
-    //状态响应
+    //Status response
     if (state == "SUCCESS") {
         picBorard.innerHTML = "";
         img.onload = function () {
@@ -611,21 +610,21 @@ function ue_callback(url, state) {
         alert(state);
     }
 }
-//去掉遮罩层
+//Remove the mask layer
 function removeMaskLayer() {
-    var maskLayer = $G("J_maskLayer");
-    maskLayer.className = "maskLayerNull";
-    maskLayer.innerHTML = "";
-    dialog.buttons[0].setDisabled(false);
+var maskLayer = $G("J_maskLayer");
+maskLayer.className = "maskLayerNull";
+maskLayer.innerHTML = "";
+dialog.buttons[0].setDisabled(false);
 }
-//添加遮罩层
+//Add a mask layer
 function addMaskLayer(html) {
-    var maskLayer = $G("J_maskLayer");
-    dialog.buttons[0].setDisabled(true);
-    maskLayer.className = "maskLayer";
-    maskLayer.innerHTML = html;
+var maskLayer = $G("J_maskLayer");
+dialog.buttons[0].setDisabled(true);
+maskLayer.className = "maskLayer";
+maskLayer.innerHTML = html;
 }
-//执行确认按钮方法
+//Execute the confirmation button method
 function exec(scrawlObj) {
     if (scrawlObj.isScrawl) {
         addMaskLayer(lang.scrawlUpLoading);
