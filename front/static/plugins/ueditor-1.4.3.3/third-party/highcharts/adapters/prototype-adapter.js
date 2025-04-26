@@ -1,12 +1,4 @@
-/*
- Highcharts JS v3.0.6 (2013-10-04)
- Prototype adapter
 
- @author Michael Nelson, Torstein Hønsi.
-
- Feel free to use and modify this script.
- Highcharts license: www.highcharts.com/license.
-*/
 var HighchartsAdapter=function(){var f=typeof Effect!=="undefined";return{init:function(a){if(f)Effect.HighchartsTransition=Class.create(Effect.Base,{initialize:function(b,c,d,g){var e;this.element=b;this.key=c;e=b.attr?b.attr(c):$(b).getStyle(c);if(c==="d")this.paths=a.init(b,b.d,d),this.toD=d,e=0,d=1;this.start(Object.extend(g||{},{from:e,to:d,attribute:c}))},setup:function(){HighchartsAdapter._extend(this.element);if(!this.element._highchart_animation)this.element._highchart_animation={};this.element._highchart_animation[this.key]=
 this},update:function(b){var c=this.paths,d=this.element;c&&(b=a.step(c[0],c[1],b,this.toD));d.attr?d.element&&d.attr(this.options.attribute,b):(c={},c[this.options.attribute]=b,$(d).setStyle(c))},finish:function(){this.element&&this.element._highchart_animation&&delete this.element._highchart_animation[this.key]}})},adapterRun:function(a,b){return parseInt($(a).getStyle(b),10)},getScript:function(a,b){var c=$$("head")[0];c&&c.appendChild((new Element("script",{type:"text/javascript",src:a})).observe("load",
 b))},addNS:function(a){var b=/^(?:click|mouse(?:down|up|over|move|out))$/;return/^(?:load|unload|abort|error|select|change|submit|reset|focus|blur|resize|scroll)$/.test(a)||b.test(a)?a:"h:"+a},addEvent:function(a,b,c){a.addEventListener||a.attachEvent?Event.observe($(a),HighchartsAdapter.addNS(b),c):(HighchartsAdapter._extend(a),a._highcharts_observe(b,c))},animate:function(a,b,c){var d,c=c||{};c.delay=0;c.duration=(c.duration||500)/1E3;c.afterFinish=c.complete;if(f)for(d in b)new Effect.HighchartsTransition($(a),
