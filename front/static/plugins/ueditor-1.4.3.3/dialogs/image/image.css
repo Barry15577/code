@@ -1,17 +1,17 @@
 @charset "utf-8";
-/* dialog样式 */
+/* dialog style */
 .wrapper {
-    zoom: 1;
-    width: 630px;
-    *width: 626px;
-    height: 380px;
-    margin: 0 auto;
-    padding: 10px;
-    position: relative;
-    font-family: sans-serif;
+zoom: 1;
+width: 630px;
+*width: 626px;
+height: 380px;
+margin: 0 auto;
+padding: 10px;
+position: relative;
+font-family: sans-serif;
 }
 
-/*tab样式框大小*/
+/*tab style box size*/
 .tabhead {
     float:left;
 }
@@ -94,7 +94,7 @@
 
 
 
-/* 远程图片样式 */
+/* Remote image style */
 #remote {
     z-index: 200;
 }
@@ -192,7 +192,7 @@
     overflow: hidden;
 }
 
-/* 上传图片 */
+/* Upload image */
 .tabbody #upload.panel {
     width: 0;
     height: 0;
@@ -632,7 +632,7 @@
 
 
 
-/* 图片管理样式 */
+/* Image management style */
 #online {
     width: 100%;
     height: 336px;
@@ -706,7 +706,7 @@
 }
 
 
-/* 图片搜索样式 */
+/* Image search style */
 #search .searchBar {
     width: 100%;
     height: 30px;
