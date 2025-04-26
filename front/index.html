@@ -7,10 +7,10 @@
   <title>Customer Relationship Management
 </title>
   <% if (process.env.NODE_ENV === 'production') { %>
-    <!-- 生产环境 -->
+
     <script>document.write('<script src="./config/index.js?t=' + new Date().getTime() + '"><\/script>');</script>
   <% }else { %>
-    <!-- 开发环境 -->
+
     <script src="./static/config/index.js"></script>
     <script src="./static/plugins/mock-1.0.0-beta3/mock-min.js"></script>
     <script src="./static/plugins/echarts-3.8.5/echarts.common.min.js"></script>
@@ -18,7 +18,6 @@
     <script src="./static/plugins/ueditor-1.4.3.3/ueditor.all.min.js"></script>
     <script src="./static/plugins/ueditor-1.4.3.3/lang/zh-cn/zh-cn.js"></script>
   <% } %>
-  <!-- 高德地图 -->
   <script type="text/javascript">
     window._AMapSecurityConfig = {
       securityJsCode: '734d51563a3b2c4a2433ae3481309408'
