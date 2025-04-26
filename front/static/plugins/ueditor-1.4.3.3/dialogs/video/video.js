@@ -1,10 +1,4 @@
-/**
- * Created by JetBrains PhpStorm.
- * User: taoqili
- * Date: 12-2-20
- * Time: 上午11:19
- * To change this template use File | Settings | File Templates.
- */
+
 
 (function(){
 
@@ -45,7 +39,7 @@
         addUrlChangeListener($G("videoUrl"));
         addOkListener();
 
-        //编辑视频时初始化相关信息
+        //Initialize relevant information when editing video
         (function(){
             var img = editor.selection.getRange().getClosedNode(),url;
             if(img && img.className){
@@ -68,7 +62,7 @@
     }
 
     /**
-     * 监听确认和取消两个按钮事件，用户执行插入或者清空正在播放的视频实例操作
+    * Listen for the confirm and cancel button events, and the user can insert or clear the playing video instance
      */
     function addOkListener(){
         dialog.onok = function(){
@@ -92,8 +86,7 @@
     }
 
     /**
-     * 依据传入的align值更新按钮信息
-     * @param align
+    * Update button information according to the passed align value
      */
     function updateAlignButton( align ) {
         var aligns = $G( "videoFloat" ).children;
@@ -111,7 +104,7 @@
     }
 
     /**
-     * 将单个视频信息插入编辑器中
+    * Insert single video information into the editor
      */
     function insertSingle(){
         var width = $G("videoWidth"),
@@ -129,8 +122,7 @@
     }
 
     /**
-     * 将元素id下的所有代表视频的图片插入编辑器中
-     * @param id
+     * Insert all the images representing the video under the element id into the editor
      */
     function insertSearch(id){
         var imgs = domUtils.getElementsByTagName($G(id),"img"),
@@ -149,9 +141,7 @@
     }
 
     /**
-     * 找到id下具有focus类的节点并返回该节点下的某个属性
-     * @param id
-     * @param returnProperty
+    * Find the node with the focus class under id and return an attribute under that node
      */
     function findFocus( id, returnProperty ) {
         var tabs = $G( id ).children,
@@ -184,8 +174,7 @@
     }
 
     /**
-      * 检测传入的所有input框中输入的长宽是否是正数
-      * @param nodes input框集合，
+      * Check whether the length and width of all input boxes passed in are positive numbers
       */
      function checkNum( nodes ) {
          for ( var i = 0, ci; ci = nodes[i++]; ) {
@@ -201,16 +190,14 @@
      }
 
     /**
-     * 数字判断
-     * @param value
+    * Digital judgment
      */
     function isNumber( value ) {
         return /(0|^[1-9]\d*$)/.test( value );
     }
 
     /**
-      * 创建图片浮动选择按钮
-      * @param ids
+      * Create a floating selection button for the image
       */
      function createAlignButton( ids ) {
          for ( var i = 0, ci; ci = ids[i++]; ) {
@@ -228,43 +215,39 @@
          }
      }
 
-    /**
-     * 选择切换
-     * @param selectParentId
-     */
-    function switchSelect( selectParentId ) {
-        var selects = $G( selectParentId ).children;
-        for ( var i = 0, ci; ci = selects[i++]; ) {
-            domUtils.on( ci, "click", function () {
-                for ( var j = 0, cj; cj = selects[j++]; ) {
-                    cj.className = "";
-                    cj.removeAttribute && cj.removeAttribute( "class" );
-                }
-                this.className = "focus";
-            } )
-        }
-    }
+/** 
+* Select switch 
+*/ 
+function switchSelect( selectParentId ) { 
+var selects = $G( selectParentId ).children; 
+for ( var i = 0, ci; ci = selects[i++]; ) { 
+domUtils.on( ci, "click", function () { 
+for (var j = 0, cj; cj = selects[j++]; ) { 
+cj.className = ""; 
+cj.removeAttribute && cj.removeAttribute( "class" ); 
+} 
+this.className = "focus"; 
+} ) 
+} 
+} 
 
-    /**
-     * 监听url改变事件
-     * @param url
-     */
-    function addUrlChangeListener(url){
-        if (browser.ie) {
-            url.onpropertychange = function () {
-                createPreviewVideo( this.value );
-            }
-        } else {
-            url.addEventListener( "input", function () {
-                createPreviewVideo( this.value );
-            }, false );
-        }
-    }
+/** 
+* Listen for url change events 
+*/ 
+function addUrlChangeListener(url){ 
+if (browser.ie) { 
+url.onpropertychange = function () { 
+createPreviewVideo( this.value ); 
+} 
+} else { url.addEventListener( "input", function () {
+createPreviewVideo( this.value );
+}, false );
+}
+}
 
-    /**
-     * 根据url生成视频预览
-     * @param url
-     */
+/**
+* Generate video preview based on url
+*/
     function createPreviewVideo(url){
         if ( !url )return;
 
@@ -282,7 +265,7 @@
     }
 
 
-    /* 插入上传视频 */
+    /* Insert uploaded video */
     function insertUpload(){
         var videoObjs=[],
             uploadDir = editor.getOpt('videoUrlPrefix'),
@@ -308,13 +291,12 @@
         }
     }
 
-    /*初始化上传标签*/
-    function initUpload(){
-        uploadFile = new UploadFile('queueList');
-    }
+    /*Initialize upload tag*/
+function initUpload(){
+uploadFile = new UploadFile('queueList');
+}
 
-
-    /* 上传附件 */
+/* Upload attachments */
     function UploadFile(target) {
         this.$wrap = target.constructor == String ? $('#' + target) : $(target);
         this.init();
@@ -328,51 +310,51 @@
         initContainer: function () {
             this.$queue = this.$wrap.find('.filelist');
         },
-        /* 初始化容器 */
-        initUploader: function () {
-            var _this = this,
-                $ = jQuery,    // just in case. Make sure it's not an other libaray.
-                $wrap = _this.$wrap,
-            // 图片容器
-                $queue = $wrap.find('.filelist'),
-            // 状态栏，包括进度和控制按钮
-                $statusBar = $wrap.find('.statusBar'),
-            // 文件总体选择信息。
-                $info = $statusBar.find('.info'),
-            // 上传按钮
-                $upload = $wrap.find('.uploadBtn'),
-            // 上传按钮
-                $filePickerBtn = $wrap.find('.filePickerBtn'),
-            // 上传按钮
-                $filePickerBlock = $wrap.find('.filePickerBlock'),
-            // 没选择文件之前的内容。
-                $placeHolder = $wrap.find('.placeholder'),
-            // 总体进度条
-                $progress = $statusBar.find('.progress').hide(),
-            // 添加的文件数量
-                fileCount = 0,
-            // 添加的文件总大小
-                fileSize = 0,
-            // 优化retina, 在retina下这个值是2
-                ratio = window.devicePixelRatio || 1,
-            // 缩略图大小
-                thumbnailWidth = 113 * ratio,
-                thumbnailHeight = 113 * ratio,
-            // 可能有pedding, ready, uploading, confirm, done.
-                state = '',
-            // 所有文件的进度信息，key为file id
-                percentages = {},
-                supportTransition = (function () {
-                    var s = document.createElement('p').style,
-                        r = 'transition' in s ||
-                            'WebkitTransition' in s ||
-                            'MozTransition' in s ||
-                            'msTransition' in s ||
-                            'OTransition' in s;
-                    s = null;
-                    return r;
-                })(),
-            // WebUploader实例
+       /* Initialize the container */
+initUploader: function () {
+var _this = this,
+$ = jQuery, // just in case. Make sure it's not an other libaray.
+$wrap = _this.$wrap,
+// Image container
+$queue = $wrap.find('.filelist'),
+// Status bar, including progress and control buttons
+$statusBar = $wrap.find('.statusBar'),
+// Overall file selection information.
+$info = $statusBar.find('.info'),
+// Upload button
+$upload = $wrap.find('.uploadBtn'),
+// Upload button
+$filePickerBtn = $wrap.find('.filePickerBtn'),
+// Upload button
+$filePickerBlock = $wrap.find('.filePickerBlock'),
+// Content before selecting a file.
+$placeHolder = $wrap.find('.placeholder'),
+// Overall progress bar
+$progress = $statusBar.find('.progress').hide(),
+// Number of files added
+fileCount = 0,
+// Total size of files added
+fileSize = 0,
+// Optimize for retina, this value is 2 under retina
+ratio = window.devicePixelRatio || 1,
+// Thumbnail size
+thumbnailWidth = 113 * ratio,
+thumbnailHeight = 113 * ratio,
+// May have pedding, ready, uploading, confirm, done.
+state = '',
+// Progress information for all files, key is file id
+percentages = {},
+supportTransition = (function () {
+var s = document.createElement('p').style,
+r = 'transition' in s ||
+'WebkitTransition' in s ||
+'MozTransition' in s || 
+'msTransition' in s || 
+'OTransition' in s; 
+s = null; 
+return r; 
+})(), 
+// WebUploader instance
                 uploader,
                 actionUrl = editor.getActionUrl(editor.getOpt('videoActionName')),
                 fileMaxSize = editor.getOpt('videoMaxSize'),
@@ -408,7 +390,7 @@
 
             setState('pedding');
 
-            // 当有文件添加进来时执行，负责view的创建
+            //Executed when a file is added, responsible for view creation
             function addFile(file) {
                 var $li = $('<li id="' + file.id + '">' +
                         '<p class="title">' + file.name + '</p>' +
@@ -472,7 +454,7 @@
                     percentages[ file.id ] = [ file.size, 0 ];
                     file.rotation = 0;
 
-                    /* 检查文件格式 */
+                    /* Check file format */
                     if (!file.ext || acceptExtensions.indexOf(file.ext.toLowerCase()) == -1) {
                         showError('not_allow_type');
                         uploader.removeFile(file);
@@ -543,7 +525,7 @@
                 $li.insertBefore($filePickerBlock);
             }
 
-            // 负责view的销毁
+            // Responsible for view destruction
             function removeFile(file) {
                 var $li = $('#' + file.id);
                 delete percentages[ file.id ];
@@ -580,32 +562,32 @@
 
                     switch (val) {
 
-                        /* 未选择文件 */
-                        case 'pedding':
-                            $queue.addClass('element-invisible');
-                            $statusBar.addClass('element-invisible');
-                            $placeHolder.removeClass('element-invisible');
-                            $progress.hide(); $info.hide();
-                            uploader.refresh();
-                            break;
+                        /* No file selected */ 
+case 'pedding': 
+$queue.addClass('element-invisible'); 
+$statusBar.addClass('element-invisible'); 
+$placeHolder.removeClass('element-invisible'); 
+$progress.hide(); $info.hide(); 
+uploader.refresh(); 
+break; 
 
-                        /* 可以开始上传 */
-                        case 'ready':
-                            $placeHolder.addClass('element-invisible');
-                            $queue.removeClass('element-invisible');
-                            $statusBar.removeClass('element-invisible');
-                            $progress.hide(); $info.show();
-                            $upload.text(lang.uploadStart);
-                            uploader.refresh();
-                            break;
+/* Can start uploading */ 
+case 'ready': 
+$placeHolder.addClass('element-invisible'); 
+$queue.removeClass('element-invisible'); 
+$statusBar.removeClass('element-invisible'); 
+$progress.hide(); $info.show(); 
+$upload.text(lang.uploadStart); 
+uploader.refresh(); 
+break; 
 
-                        /* 上传中 */
-                        case 'uploading':
-                            $progress.show(); $info.hide();
-                            $upload.text(lang.uploadPause);
-                            break;
+/* Uploading */ 
+case 'uploading': 
+$progress.show(); $info.hide();
+$upload.text(lang.uploadPause);
+break;
 
-                        /* 暂停上传 */
+/* Pause uploading */
                         case 'paused':
                             $progress.show(); $info.hide();
                             $upload.text(lang.uploadContinue);
@@ -702,20 +684,20 @@
                         setState('confirm', files);
                         break;
                     case 'startUpload':
-                        /* 添加额外的GET参数 */
-                        var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
-                            url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
-                        uploader.option('server', url);
-                        setState('uploading', files);
-                        break;
-                    case 'stopUpload':
-                        setState('paused', files);
-                        break;
-                }
-            });
+                        /* Add additional GET parameters */
+var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
+url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
+uploader.option('server', url);
+setState('uploading', files);
+break;
+case 'stopUpload':
+setState('paused', files);
+break;
+}
+});
 
-            uploader.on('uploadBeforeSend', function (file, data, header) {
-                //这里可以通过data对象添加POST参数
+uploader.on('uploadBeforeSend', function (file, data, header) {
+//Here you can add POST parameters through the data object
                 header['X_Requested_With'] = 'XMLHttpRequest';
             });
 
