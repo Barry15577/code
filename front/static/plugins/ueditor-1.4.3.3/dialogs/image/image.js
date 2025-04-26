@@ -1,10 +1,3 @@
-/**
- * User: Jinqn
- * Date: 14-04-08
- * Time: 下午16:34
- * 上传图片对话框逻辑代码,包括tab: 远程图片/上传图片/在线图片/搜索图片
- */
-
 (function () {
 
     var remoteImage,
@@ -18,7 +11,7 @@
         initButtons();
     };
 
-    /* 初始化tab标签 */
+    /* Initialize the tab label */
     function initTabs() {
         var tabs = $G('tabhead').children;
         for (var i = 0; i < tabs.length; i++) {
@@ -36,7 +29,7 @@
         }
     }
 
-    /* 初始化tabbody */
+    /* Initialize tabbody */
     function setTabFocus(id) {
         if(!id) return;
         var i, bodyId, tabs = $G('tabhead').children;
@@ -70,7 +63,7 @@
         }
     }
 
-    /* 初始化onok事件 */
+   /* Initialize onok event */
     function initButtons() {
 
         dialog.onok = function () {
@@ -111,9 +104,9 @@
     }
 
 
-    /* 初始化对其方式的点击事件 */
-    function initAlign(){
-        /* 点击align图标 */
+   /* Initialize the click event for alignment */
+function initAlign(){
+/* Click the align icon */
         domUtils.on($G("alignIcon"), 'click', function(e){
             var target = e.target || e.srcElement;
             if(target.className && target.className.indexOf('-align') != -1) {
@@ -122,7 +115,7 @@
         });
     }
 
-    /* 设置对齐方式 */
+    /* Set the alignment */
     function setAlign(align){
         align = align || 'none';
         var aligns = $G("alignIcon").children;
@@ -135,14 +128,13 @@
             }
         }
     }
-    /* 获取对齐方式 */
-    function getAlign(){
-        var align = $G("align").value || 'none';
-        return align == 'none' ? '':align;
-    }
+   /* Get alignment */
+function getAlign(){
+var align = $G("align").value || 'none';
+return align == 'none' ? '':align;
+}
 
-
-    /* 在线图片 */
+/* Online image */
     function RemoteImage(target) {
         this.container = utils.isString(target) ? document.getElementById(target) : target;
         this.init();
@@ -171,7 +163,7 @@
             var _this = this,
                 locker = $G('lock');
 
-            /* 改变url */
+            /* change url */
             domUtils.on($G("url"), 'keyup', updatePreview);
             domUtils.on($G("border"), 'keyup', updatePreview);
             domUtils.on($G("title"), 'keyup', updatePreview);
@@ -217,17 +209,17 @@
             }
         },
         setImage: function(img){
-            /* 不是正常的图片 */
+            /* Not normal picture */
             if (!img.tagName || img.tagName.toLowerCase() != 'img' && !img.getAttribute("src") || !img.src) return;
 
             var wordImgFlag = img.getAttribute("word_img"),
                 src = wordImgFlag ? wordImgFlag.replace("&amp;", "&") : (img.getAttribute('_src') || img.getAttribute("src", 2).replace("&amp;", "&")),
                 align = editor.queryCommandValue("imageFloat");
 
-            /* 防止onchange事件循环调用 */
+            /*Prevent onchange event from being called in a loop */
             if (src !== $G("url").value) $G("url").value = src;
             if(src) {
-                /* 设置表单内容 */
+                /* Set the form content */
                 $G("width").value = img.width || '';
                 $G("height").value = img.height || '';
                 $G("border").value = img.getAttribute("border") || '0';
@@ -289,7 +281,7 @@
 
 
 
-    /* 上传图片 */
+    /* upload picture */
     function UploadImage(target) {
         this.$wrap = target.constructor == String ? $('#' + target) : $(target);
         this.init();
@@ -303,39 +295,39 @@
         initContainer: function () {
             this.$queue = this.$wrap.find('.filelist');
         },
-        /* 初始化容器 */
-        initUploader: function () {
-            var _this = this,
-                $ = jQuery,    // just in case. Make sure it's not an other libaray.
-                $wrap = _this.$wrap,
-            // 图片容器
-                $queue = $wrap.find('.filelist'),
-            // 状态栏，包括进度和控制按钮
-                $statusBar = $wrap.find('.statusBar'),
-            // 文件总体选择信息。
-                $info = $statusBar.find('.info'),
-            // 上传按钮
-                $upload = $wrap.find('.uploadBtn'),
-            // 上传按钮
-                $filePickerBtn = $wrap.find('.filePickerBtn'),
-            // 上传按钮
-                $filePickerBlock = $wrap.find('.filePickerBlock'),
-            // 没选择文件之前的内容。
-                $placeHolder = $wrap.find('.placeholder'),
-            // 总体进度条
-                $progress = $statusBar.find('.progress').hide(),
-            // 添加的文件数量
-                fileCount = 0,
-            // 添加的文件总大小
-                fileSize = 0,
-            // 优化retina, 在retina下这个值是2
-                ratio = window.devicePixelRatio || 1,
-            // 缩略图大小
-                thumbnailWidth = 113 * ratio,
-                thumbnailHeight = 113 * ratio,
-            // 可能有pedding, ready, uploading, confirm, done.
-                state = '',
-            // 所有文件的进度信息，key为file id
+        /* Initialize the container */
+initUploader: function () {
+var _this = this,
+$ = jQuery, // just in case. Make sure it's not an other libaray.
+$wrap = _this.$wrap,
+// Image container
+$queue = $wrap.find('.filelist'),
+// Status bar, including progress and control buttons
+$statusBar = $wrap.find('.statusBar'),
+// Overall file selection information.
+$info = $statusBar.find('.info'),
+// Upload button
+$upload = $wrap.find('.uploadBtn'),
+// Upload button
+$filePickerBtn = $wrap.find('.filePickerBtn'),
+// Upload button
+$filePickerBlock = $wrap.find('.filePickerBlock'),
+// Content before selecting a file.
+$placeHolder = $wrap.find('.placeholder'),
+// Overall progress bar
+$progress = $statusBar.find('.progress').hide(),
+// Number of files added
+fileCount = 0,
+// Total size of files added
+fileSize = 0,
+// Optimize for retina, this value is 2 under retina
+ratio = window.devicePixelRatio || 1,
+// Thumbnail size
+thumbnailWidth = 113 * ratio,
+thumbnailHeight = 113 * ratio,
+// May have pedding, ready, uploading, confirm, done.
+state = '',
+// Progress information for all files, key is file id
                 percentages = {},
                 supportTransition = (function () {
                     var s = document.createElement('p').style,
@@ -347,7 +339,7 @@
                     s = null;
                     return r;
                 })(),
-            // WebUploader实例
+           // WebUploader instance
                 uploader,
                 actionUrl = editor.getActionUrl(editor.getOpt('imageActionName')),
                 acceptExtensions = (editor.getOpt('imageAllowFiles') || []).join('').replace(/\./g, ',').replace(/^[,]/, ''),
@@ -380,13 +372,13 @@
                 compress: editor.getOpt('imageCompressEnable') ? {
                     width: imageCompressBorder,
                     height: imageCompressBorder,
-                    // 图片质量，只有type为`image/jpeg`的时候才有效。
-                    quality: 90,
-                    // 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
-                    allowMagnify: false,
-                    // 是否允许裁剪。
-                    crop: false,
-                    // 是否保留头部meta信息。
+                    // Image quality, only valid when type is `image/jpeg`.
+quality: 90,
+// Whether to allow magnification. If you want to generate thumbnails without distortion, this option should be set to false.
+allowMagnify: false,
+// Whether to allow cropping.
+crop: false,
+// Whether to keep header meta information.
                     preserveHeaders: true
                 }:false
             });
@@ -400,7 +392,7 @@
 
             setState('pedding');
 
-            // 当有文件添加进来时执行，负责view的创建
+            //Executed when a file is added, responsible for view creation
             function addFile(file) {
                 var $li = $('<li id="' + file.id + '">' +
                         '<p class="title">' + file.name + '</p>' +
@@ -459,7 +451,7 @@
                     percentages[ file.id ] = [ file.size, 0 ];
                     file.rotation = 0;
 
-                    /* 检查文件格式 */
+                  /* Check file format */
                     if (!file.ext || acceptExtensions.indexOf(file.ext.toLowerCase()) == -1) {
                         showError('not_allow_type');
                         uploader.removeFile(file);
@@ -473,7 +465,7 @@
                         $li.off('mouseenter mouseleave');
                         $btns.remove();
                     }
-                    // 成功
+                   // success
                     if (cur === 'error' || cur === 'invalid') {
                         showError(file.statusText);
                         percentages[ file.id ][ 1 ] = 1;
@@ -530,7 +522,7 @@
                 $li.insertBefore($filePickerBlock);
             }
 
-            // 负责view的销毁
+            // Responsible for view destruction
             function removeFile(file) {
                 var $li = $('#' + file.id);
                 delete percentages[ file.id ];
@@ -567,16 +559,16 @@
 
                     switch (val) {
 
-                        /* 未选择文件 */
-                        case 'pedding':
-                            $queue.addClass('element-invisible');
-                            $statusBar.addClass('element-invisible');
-                            $placeHolder.removeClass('element-invisible');
-                            $progress.hide(); $info.hide();
-                            uploader.refresh();
-                            break;
+                      /* No file selected */
+case 'pedding':
+$queue.addClass('element-invisible');
+$statusBar.addClass('element-invisible');
+$placeHolder.removeClass('element-invisible');
+$progress.hide(); $info.hide();
+uploader.refresh();
+break;
 
-                        /* 可以开始上传 */
+/* You can start uploading */
                         case 'ready':
                             $placeHolder.addClass('element-invisible');
                             $queue.removeClass('element-invisible');
@@ -586,17 +578,17 @@
                             uploader.refresh();
                             break;
 
-                        /* 上传中 */
-                        case 'uploading':
-                            $progress.show(); $info.hide();
-                            $upload.text(lang.uploadPause);
-                            break;
+                        /* Uploading */
+case 'uploading':
+$progress.show(); $info.hide();
+$upload.text(lang.uploadPause);
+break;
 
-                        /* 暂停上传 */
-                        case 'paused':
-                            $progress.show(); $info.hide();
-                            $upload.text(lang.uploadContinue);
-                            break;
+/* Pause uploading */
+case 'paused':
+$progress.show(); $info.hide();
+$upload.text(lang.uploadContinue);
+break;
 
                         case 'confirm':
                             $progress.show(); $info.hide();
@@ -689,7 +681,7 @@
                         setState('confirm', files);
                         break;
                     case 'startUpload':
-                        /* 添加额外的GET参数 */
+                        /* Add additional GET parameters */
                         var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
                             url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
                         uploader.option('server', url);
@@ -702,7 +694,7 @@
             });
 
             uploader.on('uploadBeforeSend', function (file, data, header) {
-                //这里可以通过data对象添加POST参数
+                //Here you can add POST parameters through the data object
                 header['X_Requested_With'] = 'XMLHttpRequest';
             });
 
@@ -788,7 +780,7 @@
     };
 
 
-    /* 在线图片 */
+    /* Online pictures */
     function OnlineImage(target) {
         this.container = utils.isString(target) ? document.getElementById(target) : target;
         this.init();
@@ -798,7 +790,7 @@
             this.reset();
             this.initEvents();
         },
-        /* 初始化容器 */
+        /* Initialize the container */
         initContainer: function () {
             this.container.innerHTML = '';
             this.list = document.createElement('ul');
@@ -810,18 +802,18 @@
             this.list.appendChild(this.clearFloat);
             this.container.appendChild(this.list);
         },
-        /* 初始化滚动事件,滚动到地步自动拉取数据 */
-        initEvents: function () {
-            var _this = this;
+        /* Initialize scrolling event, automatically pull data when scrolling to the bottom */
+initEvents: function () {
+var _this = this;
 
-            /* 滚动拉取图片 */
-            domUtils.on($G('imageList'), 'scroll', function(e){
-                var panel = this;
-                if (panel.scrollHeight - (panel.offsetHeight + panel.scrollTop) < 10) {
-                    _this.getImageData();
-                }
-            });
-            /* 选中图片 */
+/* Scroll to pull pictures */
+domUtils.on($G('imageList'), 'scroll', function(e){
+var panel = this;
+if (panel.scrollHeight - (panel.offsetHeight + panel.scrollTop) < 10) {
+_this.getImageData();
+}
+});
+/* Select the picture */
             domUtils.on(this.container, 'click', function (e) {
                 var target = e.target || e.srcElement,
                     li = target.parentNode;
@@ -835,24 +827,24 @@
                 }
             });
         },
-        /* 初始化第一次的数据 */
-        initData: function () {
+        /* Initialize the first data */
+initData: function () {
 
-            /* 拉取数据需要使用的值 */
-            this.state = 0;
-            this.listSize = editor.getOpt('imageManagerListSize');
-            this.listIndex = 0;
-            this.listEnd = false;
+/* Values ​​to be used to pull data */
+this.state = 0;
+this.listSize = editor.getOpt('imageManagerListSize');
+this.listIndex = 0;
+this.listEnd = false;
 
-            /* 第一次拉取数据 */
-            this.getImageData();
-        },
-        /* 重置界面 */
-        reset: function() {
-            this.initContainer();
-            this.initData();
-        },
-        /* 向后台拉取图片列表数据 */
+/* Pull data for the first time */
+this.getImageData();
+},
+/* Reset the interface */
+reset: function() {
+this.initContainer();
+this.initData();
+},
+/* Pull image list data to the background */
         getImageData: function () {
             var _this = this;
 
@@ -895,7 +887,7 @@
                 });
             }
         },
-        /* 添加图片到列表界面上 */
+        /* Add pictures to the list interface */
         pushData: function (list) {
             var i, item, img, icon, _this = this,
                 urlPrefix = editor.getOpt('imageManagerUrlPrefix');
@@ -921,7 +913,7 @@
                 }
             }
         },
-        /* 改变图片大小 */
+        /* Change the image size */
         scale: function (img, w, h, type) {
             var ow = img.width,
                 oh = img.height;
@@ -967,38 +959,38 @@
         }
     };
 
-    /*搜索图片 */
-    function SearchImage() {
-        this.init();
-    }
-    SearchImage.prototype = {
-        init: function () {
-            this.initEvents();
-        },
-        initEvents: function(){
-            var _this = this;
+    /*Search image */
+function SearchImage() {
+this.init();
+}
+SearchImage.prototype = {
+init: function () {
+this.initEvents();
+},
+initEvents: function(){
+var _this = this;
 
-            /* 点击搜索按钮 */
-            domUtils.on($G('searchBtn'), 'click', function(){
-                var key = $G('searchTxt').value;
-                if(key && key != lang.searchRemind) {
-                    _this.getImageData();
-                }
-            });
-            /* 点击清除妞 */
-            domUtils.on($G('searchReset'), 'click', function(){
-                $G('searchTxt').value = lang.searchRemind;
-                $G('searchListUl').innerHTML = '';
-                $G('searchType').selectedIndex = 0;
-            });
-            /* 搜索框聚焦 */
-            domUtils.on($G('searchTxt'), 'focus', function(){
-                var key = $G('searchTxt').value;
-                if(key && key == lang.searchRemind) {
-                    $G('searchTxt').value = '';
-                }
-            });
-            /* 搜索框回车键搜索 */
+/* Click the search button */
+domUtils.on($G('searchBtn'), 'click', function(){
+var key = $G('searchTxt').value;
+if(key && key != lang.searchRemind) {
+_this.getImageData();
+}
+});
+/* Click to clear */
+domUtils.on($G('searchReset'), 'click', function(){
+$G('searchTxt').value = lang.searchRemind;
+$G('searchListUl').innerHTML = '';
+$G('searchType').selectedIndex = 0;
+});
+/* Search box focus */
+domUtils.on($G('searchTxt'), 'focus', function(){
+var key = $G('searchTxt').value;
+if(key && key == lang.searchRemind) {
+$G('searchTxt').value = '';
+}
+});
+/* Search box Enter key search */
             domUtils.on($G('searchTxt'), 'keydown', function(e){
                 var keyCode = e.keyCode || e.which;
                 if (keyCode == 13) {
@@ -1006,7 +998,7 @@
                 }
             });
 
-            /* 选中图片 */
+          /* Select the image */
             domUtils.on($G('searchList'), 'click', function(e){
                 var target = e.target || e.srcElement,
                     li = target.parentNode.parentNode;
@@ -1038,7 +1030,7 @@
             }
             return strOut;
         },
-        /* 改变图片大小 */
+       /* Change the image size */
         scale: function (img, w, h) {
             var ow = img.width,
                 oh = img.height;
@@ -1084,7 +1076,7 @@
                 }
             });
         },
-        /* 添加图片到列表界面上 */
+       /* Add pictures to the list interface */
         setList: function (list) {
             var i, item, p, img, link, _this = this,
                 listUl = $G('searchListUl');
