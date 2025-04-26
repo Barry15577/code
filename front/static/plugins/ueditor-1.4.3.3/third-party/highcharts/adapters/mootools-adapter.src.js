@@ -1,15 +1,3 @@
-/**
- * @license Highcharts JS v3.0.6 (2013-10-04)
- * MooTools adapter
- *
- * (c) 2010-2013 Torstein Hønsi
- *
- * License: www.highcharts.com/license
- */
-
-// JSLint options:
-/*global Fx, $, $extend, $each, $merge, Events, Event, DOMEvent */
-
 (function () {
 
 var win = window,
