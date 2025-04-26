@@ -10,9 +10,9 @@ Vue.use(Router)
 const _import = require('./import-' + process.env.NODE_ENV)
 
 
-const globalRoutes = [
-  { path: '/404', component: _import('common/404'), name: '404', meta: { title: '404未找到' } },
-  { path: '/login', component: _import('common/login'), name: 'login', meta: { title: '登录' } }
+const globalRoutes = [ 
+{ path: '/404', component: _import('common/404'), name: '404', meta: { title: '404 Not Found' } }, 
+{ path: '/login', component: _import('common/login'), name: 'login', meta: { title: 'Login' } }
 ]
 
 
@@ -27,8 +27,8 @@ const mainRoutes = {
 // 1. isTab: whether to display content through tab, true: yes, false: no
 // 2. iframeUrl: whether to display content through iframe nesting, 'starting with http[s]://': yes, '': no
 // Tip: If you need to display content through iframe nesting, but not open it through tab, please create a component yourself to use iframe processing!
-    { path: '/home', component: _import('common/home'), name: 'home', meta: { title: '首页' } },
-    { path: '/theme', component: _import('common/theme'), name: 'theme', meta: { title: '主题' } },
+    { path: '/home', component: _import('common/home'), name: 'home', meta: { title: 'home' } },
+    { path: '/theme', component: _import('common/theme'), name: 'theme', meta: { title: 'theme' } },
     
   ],
   beforeEnter (to, from, next) {
