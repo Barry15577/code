@@ -62,18 +62,18 @@ function switchTab( index ) {
         emotion.tabExist[index] = 1;
         createTab( 'tab' + index );
     }
-    //获取呈现元素句柄数组
-    var tabHeads = $G( "tabHeads" ).getElementsByTagName( "span" ),
-            tabBodys = $G( "tabBodys" ).getElementsByTagName( "div" ),
-            i = 0, L = tabHeads.length;
-    //隐藏所有呈现元素
-    for ( ; i < L; i++ ) {
-        tabHeads[i].className = "";
-        tabBodys[i].style.display = "none";
-    }
-    //显示对应呈现元素
-    tabHeads[index].className = "focus";
-    tabBodys[index].style.display = "block";
+   //Get the array of presentation element handles
+var tabHeads = $G( "tabHeads" ).getElementsByTagName( "span" ),
+tabBodys = $G( "tabBodys" ).getElementsByTagName( "div" ),
+i = 0, L = tabHeads.length;
+//Hide all presentation elements
+for ( ; i < L; i++ ) {
+tabHeads[i].className = "";
+tabBodys[i].style.display = "none";
+}
+//Display the corresponding presentation element
+tabHeads[index].className = "focus";
+tabBodys[index].style.display = "block";
 }
 
 function autoHeight( index ) {
@@ -115,12 +115,12 @@ function autoHeight( index ) {
 
 
 function createTab( tabName ) {
-    var faceVersion = "?v=1.1", //版本号
-            tab = $G( tabName ), //获取将要生成的Div句柄
-            imagePath = emotion.SmileyPath + emotion.imageFolders[tabName], //获取显示表情和预览表情的路径
-            positionLine = 11 / 2, //中间数
-            iWidth = iHeight = 35, //图片长宽
-            iColWidth = 3, //表格剩余空间的显示比例
+    var faceVersion = "?v=1.1", //version number
+tab = $G( tabName ), //get the Div handle to be generated
+imagePath = emotion.SmileyPath + emotion.imageFolders[tabName], //get the path to display and preview expressions
+positionLine = 11 / 2, //middle number
+iWidth = iHeight = 35, //image length and width
+iColWidth = 3, //display ratio of the remaining space of the table
             tableCss = emotion.imageCss[tabName],
             cssOffset = emotion.imageCssOffset[tabName],
             textHTML = ['<table class="smileytable">'],
